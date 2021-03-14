@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShopBoatDetails : ShopItemDetails
+public class BoatDetails : ItemDetails
 {
 	[SerializeField] private TextMeshProUGUI _health;
 	[SerializeField] private TextMeshProUGUI _minCrew;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopCrewDetails : ShopItemDetails
+public class CrewDetails : ItemDetails
 {
 	public override void UpdateDetails<T>(T itemDescriptor)
 	{

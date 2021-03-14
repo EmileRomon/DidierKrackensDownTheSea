@@ -8,8 +8,8 @@ public class ShopInstance : MonoBehaviour
 	[SerializeField] private RectTransform _itemsRoot;
 	[SerializeField] private ShopItem _itemPrefab;
 
-	[SerializeField] private ShopBoatDetails _boatDetails;
-	[SerializeField] private ShopCrewDetails _crewDetails;
+	[SerializeField] private BoatDetails _boatDetails;
+	[SerializeField] private CrewDetails _crewDetails;
 
 	private void Awake()
 	{
@@ -37,7 +37,7 @@ public class ShopInstance : MonoBehaviour
 		}
 	}
 
-	private void ShowDetails<T>(ShopItemDetails shopDetails, ShopItem item) where T : IncomeGenerator
+	private void ShowDetails<T>(ItemDetails shopDetails, ShopItem item) where T : IncomeGenerator
 	{
 		shopDetails.gameObject.SetActive(true);
 		shopDetails.UpdateDetails(item.ItemDescriptor);

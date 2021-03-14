@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public abstract class ShopItemDetails : MonoBehaviour 
+public abstract class ItemDetails : MonoBehaviour 
 {
 	[SerializeField] protected RawImage _preview;
 	[SerializeField] protected TextMeshProUGUI _name;
