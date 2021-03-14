@@ -54,4 +54,16 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	#endregion Money
+
+	#region Debug
+	public List<BoatDescriptor> _boatDescriptors;
+	public List<CrewMemberDescriptor> _crewDescriptors;
+
+	[ContextMenu("Add items")]
+	public void AddItems()
+	{
+		foreach (BoatDescriptor boat in _boatDescriptors) AddBoat(boat);
+		foreach (CrewMemberDescriptor crew in _crewDescriptors) AddCrewMember(crew);
+	}
+	#endregion Debug
 }

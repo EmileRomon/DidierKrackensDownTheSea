@@ -20,6 +20,6 @@ public class CrewMember : IMaintainable
 
 	public float Sell()
 	{
-		return Descriptor.SellPrice;
+		return Descriptor.ResalePrice;
 	}
 }

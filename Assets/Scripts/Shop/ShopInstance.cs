@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShopInstance : MonoBehaviour
+{
+	[SerializeField] private ShopManager _shopManager;
+	[SerializeField] private RectTransform _itemsRoot;
+	[SerializeField] private ShopItem _itemPrefab;
+
+	[SerializeField] private ShopBoatDetails _boatDetails;
+	[SerializeField] private ShopCrewDetails _crewDetails;
+
+	private void Awake()
+	{
+		ConstructShop();
+	}
+
+	private void ConstructShop()
+	{
+		List<CrewMemberDescriptor> crewMembers = _shopManager.CrewMembers;
+		foreach(CrewMemberDescriptor crewMember in crewMembers)
+		{
+			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
+			shopItem.ItemDescriptor = crewMember;
+			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<CrewMemberDescriptor>(_crewDetails, shopItem));
+			shopItem.PurchaseButton.onClick.AddListener(() => PurchaseItem(shopItem));
+		}
+
+		List<BoatDescriptor> boats = _shopManager.Boats;
+		foreach (BoatDescriptor boat in boats)
+		{
+			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
+			shopItem.ItemDescriptor = boat;
+			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<BoatDescriptor>(_boatDetails, shopItem));
+			shopItem.PurchaseButton.onClick.AddListener(() => PurchaseItem(shopItem));
+		}
+	}
+
+	private void ShowDetails<T>(ShopItemDetails shopDetails, ShopItem item) where T : IncomeGenerator
+	{
+		shopDetails.gameObject.SetActive(true);
+		shopDetails.UpdateDetails(item.ItemDescriptor);
+	}
+
+	private void PurchaseItem(ShopItem shopItem)
+	{
+		Debug.Log("Spent " + shopItem.ItemDescriptor.PurchasePrice + " coins");
+	}
+}

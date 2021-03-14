@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc5a14570d94ef43912885672eca1d4, type: 3}
-  m_Name: CrewMember
+  m_Script: {fileID: 11500000, guid: af6930a922924d74f8834c978cb98a79, type: 3}
+  m_Name: Shop
   m_EditorClassIdentifier: 
-  _itemName: Crew Memver
-  _incomeFactor: 1
-  _maintenancePrice: 100
-  _purchasePrice: 1000
-  _resalePrice: 0
+  _boatDescriptors:
+  - {fileID: 11400000, guid: 242cf7a7dd030b04f9ccfb9d77f48a18, type: 2}
+  _crewMembersDescriptors:
+  - {fileID: 11400000, guid: 75ef81310fe985c4981449e0fbdbe12b, type: 2}

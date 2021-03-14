@@ -27,6 +27,6 @@ public class Boat : IMaintainable
 	public float Sell()
 	{
 		//TO-DO: Calculer un prix de vente basé sur le prix de vente de base et la vie du bateau.
-		return Descriptor.SellPrice;
+		return Descriptor.ResalePrice;
 	}
 }
