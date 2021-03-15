@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
-  m_Name: SubGiantAlienSpiders2
+  m_Name: SubGiantAlienSpiders1
   m_EditorClassIdentifier: 
   _eventName: Giant Alien Spiders
-  _eventDescription: You can't risk fighting some unknown alien on every backwater
-    station you come across. You prepare to jump.
+  _eventDescription: Your crew boards the station, cautiously moving between corridors.
+    Suddenly a man-sized arachnid bursts from a vent in the ceiling, followed by
+    countless more. You fight your way back to the airlock and are forced to leave
+    before accounting for all crew members. Not everybody made it back.
   _eventOptions:
   - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
-  _eventOutcomes: 
+  _eventOutcomes: 01000000
+  _eventProbability: 0.7

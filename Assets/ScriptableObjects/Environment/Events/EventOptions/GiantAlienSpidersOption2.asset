@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _optionDescription: Leave them alone.
   _optionSubEvents:
-  - {fileID: 11400000, guid: cc3d8847aface7e4e8e0a5bce7fcde8d, type: 2}
+  - _event: {fileID: 11400000, guid: cc3d8847aface7e4e8e0a5bce7fcde8d, type: 2}
+    _probability: 1

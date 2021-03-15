@@ -19,4 +19,5 @@ MonoBehaviour:
   _eventOptions:
   - {fileID: 11400000, guid: 51098c4b3185b9647a68358f63224b12, type: 2}
   - {fileID: 11400000, guid: 29267acb9d9da8544abb3493844a615a, type: 2}
-  _eventOutcomes: 00000000
+  _eventOutcomes: 
+  _eventProbability: 0.2

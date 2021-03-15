@@ -15,5 +15,7 @@ MonoBehaviour:
   _optionDescription: Send the crew to help immediately! Giant alien spiders are
     no joke.
   _optionSubEvents:
-  - {fileID: 0}
-  - {fileID: 0}
+  - _event: {fileID: 11400000, guid: 67a0ebaa1dc3ba845ba766f071d33687, type: 2}
+    _probability: 0.7
+  - _event: {fileID: 11400000, guid: 92aaf4f830fcb4d40ae925ef84f12bcc, type: 2}
+    _probability: 0.3

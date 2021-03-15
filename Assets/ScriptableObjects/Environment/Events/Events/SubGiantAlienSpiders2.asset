@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: SubGiantAlienSpiders2
   m_EditorClassIdentifier: 
   _eventName: Giant Alien Spiders
-  _eventDescription: You can't risk fighting some unknown alien on every backwater
-    station you come across. You prepare to jump.
+  _eventDescription: Your crew slowly creeps up on a cluster of the creatures from
+    behind. Without warning, the giant arachnids turn and charge. However, your team
+    stays in control and before long you've beaten them back.
   _eventOptions:
   - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
-  _eventOutcomes: 
+  _eventOutcomes: 04000000
+  _eventProbability: 0.3
