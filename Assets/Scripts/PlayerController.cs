@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Linq;
 
 public class PlayerController : MonoBehaviour
 {
 	#region Crew
 	private Dictionary<string, List<Boat>> _boats = new Dictionary<string, List<Boat>>();
 	private Dictionary<string, List<CrewMember>> _crewMembers = new Dictionary<string, List<CrewMember>>();
+
+	private List<Boat> _availableBoats;
+
+	public List<Boat> AvailableBoats => _availableBoats;
 
 	public void AddBoat(BoatDescriptor descriptor)
 	{
@@ -23,6 +28,7 @@ public class PlayerController : MonoBehaviour
 			_boats.Add(descriptor.ItemName, boats);
 			
 		}
+		_availableBoats.Add(boat);
 		_itemsManager.CreateBoatItem(boat);
 	}
 
@@ -91,7 +97,15 @@ public class PlayerController : MonoBehaviour
 		float amountToSell = mgmtItem.Item.Sell();
 		Debug.Log("Sold for " + amountToSell);
 		_moneyAmount += amountToSell;
-
+		Boat boat = mgmtItem.Item as Boat;
+		if (boat != null)
+		{
+			_boats[boat.Descriptor.ItemName].Remove(boat);
+			if(_availableBoats.Contains(boat))
+			{
+				_availableBoats.Remove(boat);
+			}
+		}
 	}
 
 	public void PurchaseItem(ShopItem shopItem)

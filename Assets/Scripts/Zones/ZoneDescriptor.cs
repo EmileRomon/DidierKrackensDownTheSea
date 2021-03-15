@@ -10,6 +10,7 @@ public class ZoneDescriptor : ScriptableObject
 	[SerializeField] private float _dangerFactor;
 	[SerializeField] private List<Weather> _possibleWeathers;
 	[SerializeField] private List<ZoneAttribute> _attributes;
+	//UI : montrer temps possibles + celui actuel en surbrillance
 
 	public float MaxHealth => _maxHealth;
 	public float RentabilityFactor => _rentabilityFactor;
