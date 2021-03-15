@@ -4,22 +4,60 @@ using UnityEngine;
 
 public class ItemsManager : MonoBehaviour
 {
-	private List<ManagementItem> _items;
+	[SerializeField] private RectTransform _crewRoot;
+	[SerializeField] private RectTransform _boatRoot;
+	[SerializeField] private ManagementCrew _crewPrefab;
+	[SerializeField] private ManagementBoat _boatPrefab;
 
-	public void CreateItem(IncomeGenerator itemDescriptor)
+	[SerializeField] private BoatDetails _boatDetails;
+	[SerializeField] private CrewDetails _crewDetails;
+
+	private List<ManagementItem> _items = new List<ManagementItem>();
+
+	[SerializeField] private PlayerController _playerController;
+
+	public void CreateBoatItem(CrewItem item)
 	{
-		//add panel
-		Debug.Log("create " + itemDescriptor.ItemName);
+		ManagementBoat mgmtItem = Instantiate(_boatPrefab, _boatRoot);
+		mgmtItem.InitItem(item);
+		mgmtItem.SellButton.onClick.AddListener(() => SellItem(mgmtItem));
+		mgmtItem.RepairButton.onClick.AddListener(() => _playerController.RepairItem(mgmtItem));
+		mgmtItem.DetailsButton.onClick.AddListener(() => ShowDetails<BoatDescriptor>(_boatDetails, mgmtItem));
+		_items.Add(mgmtItem);
 	}
 
-	public void DeleteItem(IncomeGenerator itemDescriptor)
+	public void CreateCrewItem(CrewItem item)
 	{
-		//search and remove panel
+		ManagementCrew mgmtItem = Instantiate(_crewPrefab, _crewRoot);
+		mgmtItem.InitItem(item);
+		mgmtItem.SellButton.onClick.AddListener(() => SellItem(mgmtItem));
+		mgmtItem.DetailsButton.onClick.AddListener(() => ShowDetails<CrewMemberDescriptor>(_crewDetails, mgmtItem));
+		_items.Add(mgmtItem);
 	}
 
-	public void UpdateItem(IncomeGenerator itemDescriptor, int amount)
+	public void DeleteItem(CrewItem item)
 	{
-		//search and update panel count
-		Debug.Log("update " + itemDescriptor.ItemName + " with " + amount);
+		foreach(ManagementItem mgmtItem in _items)
+		{
+			if(mgmtItem.Item == item)
+			{
+				_items.Remove(mgmtItem);
+				Destroy(mgmtItem.gameObject);
+				break;
+			}
+		}
+	}
+
+	private void SellItem(ManagementItem item)
+	{
+		_playerController.SellItem(item);
+		_items.Remove(item);
+		Destroy(item.gameObject);
+	}
+
+	private void ShowDetails<T>(ItemDetails mgmtDetails, ManagementItem item) where T : IncomeGenerator
+	{
+		mgmtDetails.gameObject.SetActive(true);
+		mgmtDetails.UpdateDetails(item.Item.Descriptor);
 	}
 }

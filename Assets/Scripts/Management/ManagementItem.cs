@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ManagementItem : MonoBehaviour
+public abstract class ManagementItem : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI _itemNameText;
-	[SerializeField] private Button _detailsButton;
-	[SerializeField] private Button _sellButton;
+	[SerializeField] protected TextMeshProUGUI _itemNameText;
+	[SerializeField] protected Button _detailsButton;
+	[SerializeField] protected Button _sellButton;
+
+	protected CrewItem _item;
 
 	public Button DetailsButton => _detailsButton;
 	public Button SellButton => _sellButton;
 
-	public IncomeGenerator ItemDescriptor { get; set; }
+	public CrewItem Item => _item;
+
+	public virtual void InitItem(CrewItem item)
+	{
+		_item = item;
+		_itemNameText.text = item.Descriptor.ItemName;
+	}
 }

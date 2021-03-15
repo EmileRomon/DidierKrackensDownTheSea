@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc5a14570d94ef43912885672eca1d4, type: 3}
   m_Name: CrewMember
   m_EditorClassIdentifier: 
-  _itemName: Crew Memver
+  _itemName: Crew Member
   _incomeFactor: 1
   _maintenancePrice: 100
   _purchasePrice: 1000

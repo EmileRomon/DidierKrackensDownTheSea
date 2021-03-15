@@ -10,36 +10,37 @@ public class PlayerController : MonoBehaviour
 
 	public void AddBoat(BoatDescriptor descriptor)
 	{
-		if(_boats.ContainsKey(descriptor.ItemName))
+		Boat boat = new Boat(descriptor);
+		if (_boats.ContainsKey(descriptor.ItemName))
 		{
 			List<Boat> boats = _boats[descriptor.ItemName];
-			boats.Add(new Boat(descriptor));
-			_itemsManager.UpdateItem(descriptor, boats.Count);
+			boats.Add(boat);
 		}
 		else
 		{
 			List<Boat> boats = new List<Boat>();
-			boats.Add(new Boat(descriptor));
+			boats.Add(boat);
 			_boats.Add(descriptor.ItemName, boats);
-			_itemsManager.CreateItem(descriptor);
+			
 		}
+		_itemsManager.CreateBoatItem(boat);
 	}
 
 	public void AddCrewMember(CrewMemberDescriptor descriptor)
 	{
+		CrewMember crewMember = new CrewMember(descriptor);
 		if (_crewMembers.ContainsKey(descriptor.ItemName))
 		{
 			List<CrewMember> members = _crewMembers[descriptor.ItemName];
-			members.Add(new CrewMember(descriptor));
-			_itemsManager.UpdateItem(descriptor, members.Count);
+			members.Add(crewMember);
 		}
 		else
 		{
 			List<CrewMember> members = new List<CrewMember>();
-			members.Add(new CrewMember(descriptor));
+			members.Add(crewMember);
 			_crewMembers.Add(descriptor.ItemName, members);
-			_itemsManager.CreateItem(descriptor);
 		}
+		_itemsManager.CreateCrewItem(crewMember);
 	}
 	#endregion Crew
 
@@ -81,6 +82,47 @@ public class PlayerController : MonoBehaviour
 				{
 					return;
 				}
+			}
+		}
+	}
+
+	public void SellItem(ManagementItem mgmtItem)
+	{
+		float amountToSell = mgmtItem.Item.Sell();
+		Debug.Log("Sold for " + amountToSell);
+		_moneyAmount += amountToSell;
+
+	}
+
+	public void PurchaseItem(ShopItem shopItem)
+	{
+		if (shopItem.ItemDescriptor.PurchasePrice <= _moneyAmount)
+		{
+			_moneyAmount -= shopItem.ItemDescriptor.PurchasePrice;
+			Debug.Log("Spent " + shopItem.ItemDescriptor.PurchasePrice + " coins");
+			BoatDescriptor boatDescriptor = shopItem.ItemDescriptor as BoatDescriptor;
+			if(boatDescriptor != null)
+			{
+				AddBoat(boatDescriptor);
+			}
+			else
+			{
+				AddCrewMember(shopItem.ItemDescriptor as CrewMemberDescriptor);
+			}
+		}
+	}
+
+	public void RepairItem(ManagementBoat mgmtItem)
+	{
+		Boat boat = mgmtItem.Item as Boat;
+		if(boat != null)
+		{
+			float amountToPay = boat.Repair();
+			if (_moneyAmount >= amountToPay)
+			{
+				Debug.Log("Repaired " + amountToPay);
+				_moneyAmount -= amountToPay;
+				mgmtItem.UpdateItem();
 			}
 		}
 	}

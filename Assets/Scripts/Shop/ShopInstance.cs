@@ -11,6 +11,8 @@ public class ShopInstance : MonoBehaviour
 	[SerializeField] private BoatDetails _boatDetails;
 	[SerializeField] private CrewDetails _crewDetails;
 
+	[SerializeField] private PlayerController _playerController;
+
 	private void Awake()
 	{
 		ConstructShop();
@@ -24,7 +26,7 @@ public class ShopInstance : MonoBehaviour
 			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
 			shopItem.ItemDescriptor = crewMember;
 			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<CrewMemberDescriptor>(_crewDetails, shopItem));
-			shopItem.PurchaseButton.onClick.AddListener(() => PurchaseItem(shopItem));
+			shopItem.PurchaseButton.onClick.AddListener(() => _playerController.PurchaseItem(shopItem));
 		}
 
 		List<BoatDescriptor> boats = _shopManager.Boats;
@@ -33,7 +35,7 @@ public class ShopInstance : MonoBehaviour
 			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
 			shopItem.ItemDescriptor = boat;
 			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<BoatDescriptor>(_boatDetails, shopItem));
-			shopItem.PurchaseButton.onClick.AddListener(() => PurchaseItem(shopItem));
+			shopItem.PurchaseButton.onClick.AddListener(() => _playerController.PurchaseItem(shopItem));
 		}
 	}
 
@@ -41,10 +43,5 @@ public class ShopInstance : MonoBehaviour
 	{
 		shopDetails.gameObject.SetActive(true);
 		shopDetails.UpdateDetails(item.ItemDescriptor);
-	}
-
-	private void PurchaseItem(ShopItem shopItem)
-	{
-		Debug.Log("Spent " + shopItem.ItemDescriptor.PurchasePrice + " coins");
 	}
 }

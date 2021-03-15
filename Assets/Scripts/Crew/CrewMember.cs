@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrewMember : IMaintainable
+public class CrewMember : CrewItem
 {
-	public CrewMemberDescriptor Descriptor { get; set; }
 	public Boat CurrentBoat { get; set; }
 
 	public CrewMember(CrewMemberDescriptor descriptor)
@@ -13,12 +12,12 @@ public class CrewMember : IMaintainable
 		CurrentBoat = null;
 	}
 
-	public float Maintain()
+	public override float Maintain()
 	{
 		return Descriptor.MaintenancePrice;
 	}
 
-	public float Sell()
+	public override float Sell()
 	{
 		return Descriptor.ResalePrice;
 	}

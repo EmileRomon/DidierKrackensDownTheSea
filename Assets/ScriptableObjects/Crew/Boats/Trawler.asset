@@ -16,7 +16,7 @@ MonoBehaviour:
   _incomeFactor: 5
   _maintenancePrice: 500
   _purchasePrice: 5000
-  _resalePrice: 0
+  _resalePrice: 2500
   _maxHealth: 300
   _minCrew: 2
   _maxCrew: 5
