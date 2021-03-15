@@ -33,4 +33,14 @@ public class Boat : CrewItem
 		//TO-DO: Add a repair price
 		return Descriptor.PurchasePrice / 2;
 	}
+
+	public void AffectNewZone(Zone zone)
+	{
+		if(CurrentZone != null)
+		{
+			zone.PlacedBoats.Remove(this);
+		}
+		CurrentZone = zone;
+		zone.PlacedBoats.Add(this);
+	}
 }

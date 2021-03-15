@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 	private Dictionary<string, List<Boat>> _boats = new Dictionary<string, List<Boat>>();
 	private Dictionary<string, List<CrewMember>> _crewMembers = new Dictionary<string, List<CrewMember>>();
 
-	private List<Boat> _availableBoats;
+	private List<Boat> _availableBoats = new List<Boat>();
 
 	public List<Boat> AvailableBoats => _availableBoats;
 

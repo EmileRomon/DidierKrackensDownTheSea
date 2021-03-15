@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Zone : MonoBehaviour
 {
-	public ZoneDescriptor Descriptor { get; set; }
+	[SerializeField] private ZoneDescriptor _descriptor;
+	[SerializeField] private ZoneDetails _details;
+
+	public ZoneDescriptor Descriptor => _descriptor;
 	public float CurrentHealth { get; set; }
 	public Weather CurrentWeather { get; set; }
 
-	public Zone(ZoneDescriptor descriptor)
+	private List<Boat> _placedBoats = new List<Boat>();
+	public List<Boat> PlacedBoats => _placedBoats;
+
+	private void Awake()
 	{
-		Descriptor = descriptor;
-		CurrentHealth = descriptor.MaxHealth;
+		CurrentHealth = _descriptor.MaxHealth;
 		ChangeWeather();
 	}
 
 	public void ChangeWeather()
 	{
 		CurrentWeather = Descriptor.PickRandomWeather();
+	}
+
+	public void OpenZoneDetails()
+	{
+		_details.gameObject.SetActive(true);
+		_details.UpdateDetails(this);
 	}
 }
