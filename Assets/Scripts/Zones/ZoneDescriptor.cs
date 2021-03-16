@@ -11,6 +11,7 @@ public class ZoneDescriptor : ScriptableObject
 	[SerializeField] private float _dangerFactor;
 	[SerializeField] private List<Weather> _possibleWeathers;
 	[SerializeField] private List<ZoneAttribute> _attributes;
+	[SerializeField] private List<Event> _events;
 
 	public string ZoneName => _name;
 	public float MaxHealth => _maxHealth;
@@ -18,6 +19,7 @@ public class ZoneDescriptor : ScriptableObject
 	public float DangerFactor => _dangerFactor;
 	public List<Weather> PossibleWeathers => _possibleWeathers;
 	public List<ZoneAttribute> Attributes => _attributes;
+	public List<Event> Events => _events;
 
 	public Weather PickRandomWeather()
 	{
