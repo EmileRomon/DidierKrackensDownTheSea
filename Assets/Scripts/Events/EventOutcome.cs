@@ -13,13 +13,12 @@ public class EventOutcome : ScriptableObject
 
     public override string ToString()
     {
-        string resource = _targetResource switch
+        return _targetResource switch
         {
-            ResourceType.Crew => " crew member",
-            ResourceType.Boat => " boat",
-            ResourceType.Money => "$",
+            ResourceType.Crew => _value + " crew member",
+            ResourceType.Boat => _value + " boat",
+            ResourceType.Money => "$" + _value,
             _ => "",
         };
-        return _value + resource;
     }
 }

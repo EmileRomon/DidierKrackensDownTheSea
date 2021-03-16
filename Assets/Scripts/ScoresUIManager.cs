@@ -13,7 +13,7 @@ public class ScoresUIManager : MonoBehaviour
     }
     public void UpdateMoneyCounter(float amount)
     {
-        _moneyDisplay.text = string.Format("Money: {0}$", amount);
+        _moneyDisplay.text = string.Format("Money: ${0}", amount);
     }
     public void UpdateScoreCounter(float score)
     {
