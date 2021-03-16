@@ -38,9 +38,9 @@ public class Boat : CrewItem
 	{
 		if(CurrentZone != null)
 		{
-			zone.PlacedBoats.Remove(this);
+			CurrentZone.PlacedBoats.Remove(this);
 		}
 		CurrentZone = zone;
-		zone.PlacedBoats.Add(this);
+		if(zone!=null ) zone.PlacedBoats.Add(this);
 	}
 }
