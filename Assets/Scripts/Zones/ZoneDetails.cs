@@ -19,7 +19,7 @@ public class ZoneDetails : MonoBehaviour
 
 	public void UpdateDetails(Zone zone)
 	{
-		_name.text = zone.name;
+		_name.text = zone.Descriptor.ZoneName;
 		_health.text = string.Format("{0}/{1}", zone.CurrentHealth, zone.Descriptor.MaxHealth);
 		_profit.text = zone.Descriptor.RentabilityFactor.ToString();
 		_risk.text = zone.Descriptor.DangerFactor.ToString();
