@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+	#region Events
+	[System.Serializable] public class ChangePlayerBoatListEvent : UnityEvent<Boat> { }
+
+	[SerializeField] private ChangePlayerBoatListEvent _addingBoat;
+	[SerializeField] private ChangePlayerBoatListEvent _removingBoat;
+
+	#endregion
+
 	#region Crew
 	private Dictionary<string, List<Boat>> _boats = new Dictionary<string, List<Boat>>();
 	private Dictionary<string, List<CrewMember>> _crewMembers = new Dictionary<string, List<CrewMember>>();
@@ -30,6 +39,8 @@ public class PlayerController : MonoBehaviour
 		}
 		_availableBoats.Add(boat);
 		_itemsManager.CreateBoatItem(boat);
+
+		_addingBoat.Invoke(boat);
 	}
 
 	public void AddCrewMember(CrewMemberDescriptor descriptor)
@@ -105,6 +116,8 @@ public class PlayerController : MonoBehaviour
 			{
 				_availableBoats.Remove(boat);
 			}
+
+			_removingBoat.Invoke(boat);
 		}
 	}
 
