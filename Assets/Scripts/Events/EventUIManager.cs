@@ -6,6 +6,7 @@ public class EventUIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _eventNameText;
     [SerializeField] private TextMeshProUGUI _eventDescriptionText;
+    [SerializeField] private TextMeshProUGUI _eventOutcomesText;
     [SerializeField] private Transform _optionsContainer;
     [SerializeField] private EventOptionElementController _optionPrefab;
 
@@ -13,6 +14,12 @@ public class EventUIManager : MonoBehaviour
     {
         _eventNameText.text = eventToDisplay.EventName;
         _eventDescriptionText.text = eventToDisplay.EventDescription;
+
+        _eventOutcomesText.text = "";
+        foreach (EventOutcome outcome in eventToDisplay.EventOutcomes)
+        {
+            _eventOutcomesText.text += outcome.ToString() + " ";
+        }
 
         foreach (Transform child in _optionsContainer)
         {

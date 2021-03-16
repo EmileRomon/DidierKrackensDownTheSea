@@ -19,5 +19,6 @@ MonoBehaviour:
     before accounting for all crew members. Not everybody made it back.
   _eventOptions:
   - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
-  _eventOutcomes: 01000000
+  _eventOutcomes:
+  - {fileID: 11400000, guid: 150ecccc852e13a4ea1eac3df34e84a3, type: 2}
   _eventProbability: 0.7

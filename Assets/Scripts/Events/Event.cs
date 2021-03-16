@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EventOutcome { None, LoseCrewMember, LoseBoat, LoseMoney, WinMoney };
-
 [CreateAssetMenu(fileName = "Event", menuName = "Environment/Events/Event")]
 public class Event : ScriptableObject
 {

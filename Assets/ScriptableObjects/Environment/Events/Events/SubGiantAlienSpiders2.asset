@@ -18,5 +18,6 @@ MonoBehaviour:
     stays in control and before long you've beaten them back.
   _eventOptions:
   - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
-  _eventOutcomes: 04000000
+  _eventOutcomes:
+  - {fileID: 11400000, guid: 3304c3b918a8cd8489e4a4f97e98971c, type: 2}
   _eventProbability: 0.3
