@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7959785492428695439}
   - component: {fileID: 7959785492428695438}
   - component: {fileID: 7959785492428695437}
-  - component: {fileID: 7959785492428695436}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -91,19 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e36011a466c1c34cac40ef3c98d93dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7959785492428695436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959785492428695433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5863c9eb9babc4d88cf996fe5f3d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _boatList: {fileID: 7959785492428695437}
+  _prefabListItem: {fileID: 6545368659825148863, guid: 6545c0f52661ebc489811e276d68c422, type: 3}
+  _pc: {fileID: 0}
 --- !u!1 &7959785492915268739
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +104,7 @@ GameObject:
   - component: {fileID: 7959785492915268743}
   - component: {fileID: 7959785492915268736}
   - component: {fileID: 7959785492915268737}
+  - component: {fileID: 7432386793751628084}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -194,6 +183,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &7432386793751628084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959785492915268739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5863c9eb9babc4d88cf996fe5f3d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boatList: {fileID: 7959785492428695437}
 --- !u!1 &7959785493088606465
 GameObject:
   m_ObjectHideFlags: 0

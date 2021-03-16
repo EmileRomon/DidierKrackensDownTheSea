@@ -4,44 +4,67 @@ using UnityEngine;
 
 public class DraggableBoatList : MonoBehaviour
 {
-    [SerializeField] private BoatDescriptor DEBUG_BOAT;
-
     [SerializeField] private GameObject _prefabListItem;
 
-    //tmp, shoud be the list from zone or the list from the player
-    private List<Boat> _list;
+    [SerializeField] private PlayerController _pc;
 
-    public void Awake()
+    private void Start()
     {
-        // populate
-        _list = new List<Boat>();
+        if (_pc != null)
+        {
+            foreach (Boat b in _pc.AvailableBoats)
+            {
+                GameObject go = Instantiate(_prefabListItem, transform);
+                BoatListItem bli = go.GetComponent<BoatListItem>();
+                Debug.Assert(bli != null);
+                bli.SetBoat(b);
+            }
+        }
     }
 
-    public void AddBoat(Boat boat)
+    /// <summary>
+    /// Adding a new boat (used when purchasing a boat)
+    /// </summary>
+    /// <param name="boat"></param>
+    public void AddNewBoat(Boat boat)
     {
-        Debug.Log("Adding boat to " + gameObject.name);
-        _list.Add(boat);
-
         GameObject go = Instantiate(_prefabListItem, transform);
         BoatListItem bli = go.GetComponent<BoatListItem>();
         Debug.Assert(bli != null);
         bli.SetBoat(boat);
     }
 
-    public void RemoveBoat(Boat boat)
+    public void AddBoat(Boat boat)
     {
-        Debug.Log("Removing boat from " + gameObject.name);
-        _list.Remove(boat);
-    }
-
-    [ContextMenu("Populate")]
-    public void Populate()
-    {
-        for(int i=0;i<5;++i)
+        AddNewBoat(boat);
+        if (boat.CurrentZone == null) //if no zone, go back in player list
         {
-            Boat boat = new Boat(Instantiate(DEBUG_BOAT));
-            AddBoat(boat);
+            _pc.AvailableBoats.Add(boat);
         }
     }
 
+    public void RemoveBoat(Boat boat)
+    {
+        _pc.AvailableBoats.Remove(boat);
+        UpdateView();
+    }
+
+    [ContextMenu("Update")]
+    public void UpdateView()
+    {
+        for (int i = 0; i < transform.childCount;++i)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        if (_pc != null)
+        {
+            foreach (Boat b in _pc.AvailableBoats)
+            {
+                GameObject go = Instantiate(_prefabListItem, transform);
+                BoatListItem bli = go.GetComponent<BoatListItem>();
+                Debug.Assert(bli != null);
+                bli.SetBoat(b);
+            }
+        }
+    }
 }

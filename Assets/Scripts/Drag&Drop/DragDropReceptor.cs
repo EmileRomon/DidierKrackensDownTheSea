@@ -7,6 +7,13 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 {
     [SerializeField] DraggableBoatList _boatList;
 
+    private Zone _zone;
+
+    private void Start()
+    {
+        _zone = GetComponent<Zone>();
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         DraggableBoat db = eventData.pointerDrag.GetComponent<DraggableBoat>();
@@ -15,6 +22,10 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
         {
             Destroy(eventData.pointerDrag);
 
+            if (db.Boat.CurrentZone == null)
+                db.RemoveFromList();
+
+            db.Boat.AffectNewZone(_zone);
             _boatList.AddBoat(db.Boat);
         }
     }

@@ -34,7 +34,7 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
         _itemNameText.text = bd.ItemName;
     }
 
-    private void OnDestroy()
+    public void RemoveFromList()
     {
         _boatList.RemoveBoat(_boat);
     }
