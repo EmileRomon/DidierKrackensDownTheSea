@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ZoneDetails : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class ZoneDetails : MonoBehaviour
 	[SerializeField] private Image _weatherPrefab;
 	[SerializeField] private Color _enabledColor;
 	[SerializeField] private Color _disabledColor;
+
+	[SerializeField] private RectTransform _boatsRoot;
+	[SerializeField] private BoatListItem _boatPrefab;
 
 	public void UpdateDetails(Zone zone)
 	{
@@ -34,5 +38,15 @@ public class ZoneDetails : MonoBehaviour
 			weatherImage.sprite = weather.WeatherSprite;
 			weatherImage.color = (zone.CurrentWeather == weather) ? _enabledColor : _disabledColor;
 		}
+
+		foreach(Transform t in _boatsRoot.transform)
+        {
+			Destroy(t.gameObject);
+        }
+		foreach(Boat b in zone.PlacedBoats)
+        {
+			BoatListItem db = GameObject.Instantiate(_boatPrefab, _boatsRoot);
+			db.SetBoat(b);
+        }
 	}
 }

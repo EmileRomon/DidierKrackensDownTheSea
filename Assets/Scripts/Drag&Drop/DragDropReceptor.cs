@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DragDropReceptor: MonoBehaviour, IDropHandler
 {
-    [SerializeField] DraggableBoatList _boatList;
-
     private Zone _zone;
+    private DraggableBoatList _list;
 
     private void Start()
     {
         _zone = GetComponent<Zone>();
+        _list = GetComponentInChildren<DraggableBoatList>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -26,7 +26,12 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
                 db.RemoveFromList();
 
             db.Boat.AffectNewZone(_zone);
-            _boatList.AddBoat(db.Boat);
+            
+            if(_list!=null)
+            {
+                _list.AddBoat(db.Boat);
+            }
         }
+
     }
 }

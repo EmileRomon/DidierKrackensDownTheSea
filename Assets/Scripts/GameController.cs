@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     #region Player
 
     [SerializeField] PlayerController _playerController;
-    private int _day;
+    private int _day; //TODO: use the one in playercontroller
 
     #endregion
 
