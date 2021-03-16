@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89768d8626d2a1b4f8b3bc094584f30d, type: 3}
   m_Name: Trawler
   m_EditorClassIdentifier: 
+  _itemName: Trawler
   _incomeFactor: 5
   _maintenancePrice: 500
   _purchasePrice: 5000
-  _sellPrice: 2500
+  _resalePrice: 2500
   _maxHealth: 300
   _minCrew: 2
   _maxCrew: 5

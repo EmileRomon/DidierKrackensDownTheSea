@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Rainy
   m_EditorClassIdentifier: 
   _weatherName: Rainy
+  _weatherSprite: {fileID: 21300000, guid: b758ef7216185994393ed34e2797a921, type: 3}

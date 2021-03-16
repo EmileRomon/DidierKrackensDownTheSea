@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df07a9db32cf7c448572fd91ce2b808, type: 3}
   m_Name: StMichel
   m_EditorClassIdentifier: 
+  _name: Mont-Saint-Michel
   _maxHealth: 100
   _rentabilityFactor: 1
   _dangerFactor: 0.5
