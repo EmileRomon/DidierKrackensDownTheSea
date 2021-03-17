@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShopInstance : MonoBehaviour
 {
 	[SerializeField] private ShopManager _shopManager;
-	[SerializeField] private RectTransform _itemsRoot;
+	[SerializeField] private RectTransform _boatsRoot;
+	[SerializeField] private RectTransform _crewMembersRoot;
 	[SerializeField] private ShopItem _itemPrefab;
 
 	[SerializeField] private BoatDetails _boatDetails;
@@ -23,7 +24,7 @@ public class ShopInstance : MonoBehaviour
 		List<CrewMemberDescriptor> crewMembers = _shopManager.CrewMembers;
 		foreach(CrewMemberDescriptor crewMember in crewMembers)
 		{
-			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
+			ShopItem shopItem = Instantiate(_itemPrefab, _crewMembersRoot);
 			shopItem.ItemDescriptor = crewMember;
 			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<CrewMemberDescriptor>(_crewDetails, shopItem));
 			shopItem.PurchaseButton.onClick.AddListener(() => _playerController.PurchaseItem(shopItem));
@@ -32,7 +33,7 @@ public class ShopInstance : MonoBehaviour
 		List<BoatDescriptor> boats = _shopManager.Boats;
 		foreach (BoatDescriptor boat in boats)
 		{
-			ShopItem shopItem = Instantiate(_itemPrefab, _itemsRoot);
+			ShopItem shopItem = Instantiate(_itemPrefab, _boatsRoot);
 			shopItem.ItemDescriptor = boat;
 			shopItem.DetailsButton.onClick.AddListener(() => ShowDetails<BoatDescriptor>(_boatDetails, shopItem));
 			shopItem.PurchaseButton.onClick.AddListener(() => _playerController.PurchaseItem(shopItem));
