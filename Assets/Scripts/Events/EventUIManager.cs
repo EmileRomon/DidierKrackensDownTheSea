@@ -10,25 +10,46 @@ public class EventUIManager : MonoBehaviour
     [SerializeField] private Transform _optionsContainer;
     [SerializeField] private EventOptionElementController _optionPrefab;
 
-    private LinkedList<Event> eventsToDisplay;
+    [SerializeField] private GameController _gameController;
 
-    public void DisplayEvent()
+    private class EventTarget
     {
-        Event eventToDisplay = eventsToDisplay.First.Value;
-        if (eventToDisplay == null)
+        public Event EventToApply { get; }
+        public Boat Target { get; }
+        public EventTarget(Event e, Boat b)
+        {
+            EventToApply = e;
+            Target = b;
+        }
+    }
+
+    private LinkedList<EventTarget> eventsToDisplay = new LinkedList<EventTarget>();
+
+    public void DisplayAllEvents()
+    {
+        gameObject.SetActive(true);
+        DisplayEvent();
+    }
+
+    private void DisplayEvent()
+    {
+        if (eventsToDisplay.First == null)
         {
             gameObject.SetActive(false);
             return;
         }
+        Event eventToDisplay = eventsToDisplay.First.Value.EventToApply;
+        Boat target = eventsToDisplay.First.Value.Target;
         eventsToDisplay.RemoveFirst();
 
-        _eventNameText.text = eventToDisplay.EventName;
+        _eventNameText.text = string.Format("{0} -{1}, {2}", eventToDisplay.EventName, target.CurrentZone, target.Descriptor.ItemName);
         _eventDescriptionText.text = eventToDisplay.EventDescription;
 
         _eventOutcomesText.text = "";
         foreach (EventOutcome outcome in eventToDisplay.EventOutcomes)
         {
             _eventOutcomesText.text += outcome.ToString() + " ";
+            _gameController.ApplyOutcomeEffect(outcome, target);
         }
 
         foreach (Transform child in _optionsContainer)
@@ -41,22 +62,23 @@ public class EventUIManager : MonoBehaviour
             GameObject optionGO = Instantiate(_optionPrefab.gameObject, _optionsContainer);
             EventOptionElementController optionElm = optionGO.GetComponent<EventOptionElementController>();
             optionElm.OptionDescription = option.OptionDescription;
-            optionElm.OptionButton.onClick.AddListener(() => LoadRandomEvent(option.OptionSubEvents, true));
+            optionElm.OptionButton.onClick.AddListener(() => LoadRandomEvent(option.OptionSubEvents, target, true));
         }
     }
 
-    public void LoadRandomEvent(List<Event> events, bool displayImmediately = false)
+    public void LoadRandomEvent(List<Event> events, Boat eventTarget, bool displayImmediately = false)
     {
         Event e = PickRandomEvent(events);
+        EventTarget et = new EventTarget(e, eventTarget);
         if (e != null)
         {
             if (displayImmediately)
             {
-                eventsToDisplay.AddFirst(e);
+                eventsToDisplay.AddFirst(et);
             }
             else
             {
-                eventsToDisplay.AddLast(e);
+                eventsToDisplay.AddLast(et);
             }
         }
         if (displayImmediately)

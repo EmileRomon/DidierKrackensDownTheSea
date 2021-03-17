@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
     {
         PrintDebug();
 
-        LaunchEvents();
+        //LaunchEvents();
 
         _day++;
 
@@ -124,10 +124,44 @@ public class GameController : MonoBehaviour
         {
             foreach (Boat boat in z.PlacedBoats)
             {
-                _eventUIManager.LoadRandomEvent(z.Descriptor.Events, false);
+                if (Random.value > z.Descriptor.NoEventProbability)
+                {
+                    _eventUIManager.LoadRandomEvent(z.Descriptor.Events, boat, false);
+                }
             }
         }
+        _eventUIManager.DisplayAllEvents();
     }
+
+    public void ApplyOutcomeEffect(EventOutcome outcome, Boat target)
+    {
+        //TODO
+        switch (outcome.TargetResource)
+        {
+            case ResourceType.Boat:
+                break;
+            case ResourceType.Crew:
+                break;
+            case ResourceType.Health:
+                if (outcome.AffectOtherInZone)
+                {
+                    foreach (Boat b in target.CurrentZone.PlacedBoats)
+                    {
+                        b.CurrentHealth -= outcome.Value;
+                    }
+                }
+                else
+                {
+                    target.CurrentHealth -= outcome.Value;
+                }
+                break;
+            case ResourceType.Money:
+                break;
+            default:
+                break;
+        }
+    }
+
     #endregion Event
     #endregion
 }

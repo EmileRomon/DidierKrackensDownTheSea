@@ -11,6 +11,7 @@ public class EventOutcome : ScriptableObject
 
     public ResourceType TargetResource => _targetResource;
     public int Value => _value;
+    public bool AffectOtherInZone => _affectOtherInZone;
 
     public override string ToString()
     {
