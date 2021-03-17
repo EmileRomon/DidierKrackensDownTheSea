@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df07a9db32cf7c448572fd91ce2b808, type: 3}
   m_Name: StMichel 1
   m_EditorClassIdentifier: 
+  _name: 
   _maxHealth: 100
   _rentabilityFactor: 1
   _dangerFactor: 0.5
@@ -23,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3e58bb19aa47ee48bba59a85be3d43e, type: 2}
   _events:
   - {fileID: 11400000, guid: e5002da823fcf434bb53d198c29ce5b2, type: 2}
+  _noEventProbability: 0.5

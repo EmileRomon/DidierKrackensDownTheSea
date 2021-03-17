@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -20,7 +18,7 @@ public class GameController : MonoBehaviour
     #region BoatLists
 
     [SerializeField] DraggableBoatList _playerList;
-    private DraggableBoatList[] _boatsList; 
+    private DraggableBoatList[] _boatsList;
 
     #endregion
 
@@ -74,7 +72,7 @@ public class GameController : MonoBehaviour
     {
         _playerList.UpdateView();
 
-        foreach(DraggableBoatList dbl in _boatsList)
+        foreach (DraggableBoatList dbl in _boatsList)
         {
             dbl.UpdateView();
         }
@@ -83,17 +81,17 @@ public class GameController : MonoBehaviour
     private void PrintDebug()
     {
         Debug.Log("Day " + _day);
-        foreach(Zone z in _zones)
+        foreach (Zone z in _zones)
         {
             Debug.Log("In zone " + z.Descriptor.name + " from " + z.gameObject.name);
-            foreach(Boat boat in z.PlacedBoats)
+            foreach (Boat boat in z.PlacedBoats)
             {
                 Debug.Log(" - " + boat.Descriptor.ItemName);
             }
         }
 
         Debug.Log("Boat not placed :");
-        foreach(Boat boat in _playerController.AvailableBoats)
+        foreach (Boat boat in _playerController.AvailableBoats)
         {
             Debug.Log(" - " + boat.Descriptor.ItemName);
         }
@@ -102,7 +100,9 @@ public class GameController : MonoBehaviour
     public void EndDay()
     {
         PrintDebug();
-        
+
+        LaunchEvents();
+
         _day++;
 
         CalculateProfit();
@@ -115,5 +115,19 @@ public class GameController : MonoBehaviour
         UpdateView();
     }
 
+    #region Event
+    [SerializeField] private EventUIManager _eventUIManager;
+
+    private void LaunchEvents()
+    {
+        foreach (Zone z in _zones)
+        {
+            foreach (Boat boat in z.PlacedBoats)
+            {
+                _eventUIManager.LoadRandomEvent(z.Descriptor.Events, false);
+            }
+        }
+    }
+    #endregion Event
     #endregion
 }

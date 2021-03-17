@@ -10,8 +10,18 @@ public class EventUIManager : MonoBehaviour
     [SerializeField] private Transform _optionsContainer;
     [SerializeField] private EventOptionElementController _optionPrefab;
 
-    public void DisplayEvent(Event eventToDisplay)
+    private LinkedList<Event> eventsToDisplay;
+
+    public void DisplayEvent()
     {
+        Event eventToDisplay = eventsToDisplay.First.Value;
+        if (eventToDisplay == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        eventsToDisplay.RemoveFirst();
+
         _eventNameText.text = eventToDisplay.EventName;
         _eventDescriptionText.text = eventToDisplay.EventDescription;
 
@@ -31,35 +41,55 @@ public class EventUIManager : MonoBehaviour
             GameObject optionGO = Instantiate(_optionPrefab.gameObject, _optionsContainer);
             EventOptionElementController optionElm = optionGO.GetComponent<EventOptionElementController>();
             optionElm.OptionDescription = option.OptionDescription;
-            optionElm.OptionButton.onClick.AddListener(() => LoadRandomEvent(option.OptionSubEvents));
+            optionElm.OptionButton.onClick.AddListener(() => LoadRandomEvent(option.OptionSubEvents, true));
         }
     }
 
-    public void LoadRandomEvent(List<Event> events)
+    public void LoadRandomEvent(List<Event> events, bool displayImmediately = false)
     {
-        if (events.Count == 0)
+        Event e = PickRandomEvent(events);
+        if (e != null)
         {
-            gameObject.SetActive(false);
-            return;
+            if (displayImmediately)
+            {
+                eventsToDisplay.AddFirst(e);
+            }
+            else
+            {
+                eventsToDisplay.AddLast(e);
+            }
         }
+        if (displayImmediately)
+        {
+            DisplayEvent();
+        }
+    }
 
+    private Event PickRandomEvent(List<Event> events)
+    {
         float sum = 0f;
         foreach (Event e in events)
         {
             sum += e.EventProbability;
         }
-        //In case the sum of probability is not 1
-        float rand = Random.value * sum;
 
-        sum = 0f;
-        foreach (Event e in events)
+        if (sum != 0f)
         {
-            sum += e.EventProbability;
-            if (rand < sum)
+            //In case the sum of probability is not 1
+            float rand = Random.value * sum;
+
+            sum = 0f;
+            foreach (Event e in events)
             {
-                DisplayEvent(e);
-                return;
+                sum += e.EventProbability;
+                if (rand < sum)
+                {
+                    return e;
+                }
             }
         }
+        return null;
     }
+
+
 }
