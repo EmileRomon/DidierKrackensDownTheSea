@@ -18,6 +18,8 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 
     public Boat Boat => _boat;
 
+	[SerializeField] private PlayerHandler _playerHandler;
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -57,4 +59,14 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
         transform.SetParent(_saveParent);
         _canvasGroup.blocksRaycasts = true;
     }
+
+	public void AssignMember()
+	{
+		_playerHandler.Player.AssignMemberToBoat(_boat);
+	}
+
+	public void RemoveMember()
+	{
+		_playerHandler.Player.RemoveMemberFromBoat(_boat);
+	}
 }

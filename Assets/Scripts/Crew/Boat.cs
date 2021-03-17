@@ -5,7 +5,9 @@ using UnityEngine;
 public class Boat : CrewItem
 {
 	public float CurrentHealth { get; set; }
-	public int CrewCount { get; set; }
+	private List<CrewMember> _crew = new List<CrewMember>();
+
+	public List<CrewMember> Crew => _crew;
 
 	public Zone CurrentZone { get; set; }
 
@@ -13,7 +15,6 @@ public class Boat : CrewItem
 	{
 		Descriptor = descriptor;
 		CurrentHealth = descriptor.MaxHealth;
-		CrewCount = 0;
 		CurrentZone = null;
 	}
 
