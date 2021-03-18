@@ -135,6 +135,8 @@ public class GameController : MonoBehaviour
     {
         PrintDebug();
 
+        //if _playerCOntrooler.Money<0 then gameover
+
         //LaunchEvents();
 
         _day++;
@@ -142,17 +144,17 @@ public class GameController : MonoBehaviour
         CalculateProfit();
         CalculateCost();
 
-        //damage boats
+        //todo:damage boats
 
         DecayFromBoats();
         DecayNatural();
 
-        //display le resume
+        //todo:display le resume
 
         _playerController.AddToMoneyAmount(_profit);
         _playerController.AddToMoneyAmount(_cost *= -1);
 
-        //if money < 0 ?
+        //todo: if money < 0 ?
 
         PutBackBoat();
         UpdateView();
