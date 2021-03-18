@@ -7,6 +7,26 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController _playerController;
     private int _day; //TODO: use the one in playercontroller
 
+    /// <summary>
+    /// Money gain today with the boats (and the event ?)
+    /// </summary>
+    private float _profit;
+    public float Profit => _profit;
+
+    /// <summary>
+    /// Cost of the day (salary, debt,(event?) ect...)
+    /// </summary>
+    private float _cost;
+    public float Cost => _cost;
+
+    [Header("Price of a basic fish, impact every zone")]
+    [SerializeField] private float _price;
+
+    [Header("Debt, price to pay everyday")]
+    [SerializeField] private float _dailyDebt;
+
+
+
     #endregion
 
     #region Zones
@@ -18,7 +38,6 @@ public class GameController : MonoBehaviour
     #region BoatLists
 
     [SerializeField] DraggableBoatList _playerList;
-    private DraggableBoatList[] _boatsList;
 
     #endregion
 
@@ -29,7 +48,9 @@ public class GameController : MonoBehaviour
         _day = 0;
 
         _zones = FindObjectsOfType<Zone>();
-        _boatsList = FindObjectsOfType<DraggableBoatList>();
+
+        Debug.Assert(_price != 0, "Price of fish no set");
+        Debug.Assert(_dailyDebt != 0, "Daily debt not set");
     }
 
     #endregion
@@ -38,22 +59,37 @@ public class GameController : MonoBehaviour
 
     private void CalculateProfit()
     {
-
+        _profit = 0;
+        foreach(Zone z in _zones)
+        {
+            _profit += z.GetMoney()*_price;
+        }
     }
 
     private void CalculateCost()
     {
+        _cost = 0;
+        //TODO: crew salary
 
+        _cost += _dailyDebt;
+
+        
     }
 
     private void DecayFromBoats()
     {
-
+        foreach(Zone zone in _zones)
+        {
+            zone.DecayFromBoats();
+        }
     }
 
     private void DecayNatural()
     {
-
+        foreach(Zone zone in _zones)
+        {
+            zone.DecayNatural(); 
+        }
     }
 
     private void PutBackBoat()
@@ -71,11 +107,6 @@ public class GameController : MonoBehaviour
     private void UpdateView()
     {
         _playerList.UpdateView();
-
-        foreach (DraggableBoatList dbl in _boatsList)
-        {
-            dbl.UpdateView();
-        }
     }
 
     private void PrintDebug()
@@ -95,6 +126,9 @@ public class GameController : MonoBehaviour
         {
             Debug.Log(" - " + boat.Descriptor.ItemName);
         }
+
+        Debug.Log("Profit: " + _profit);
+        Debug.Log("Cost : " + _cost);
     }
 
     public void EndDay()
@@ -108,8 +142,17 @@ public class GameController : MonoBehaviour
         CalculateProfit();
         CalculateCost();
 
+        //damage boats
+
         DecayFromBoats();
         DecayNatural();
+
+        //display le resume
+
+        _playerController.AddToMoneyAmount(_profit);
+        _playerController.AddToMoneyAmount(_cost *= -1);
+
+        //if money < 0 ?
 
         PutBackBoat();
         UpdateView();

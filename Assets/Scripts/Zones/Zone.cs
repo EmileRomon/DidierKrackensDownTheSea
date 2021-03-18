@@ -25,6 +25,32 @@ public class Zone : MonoBehaviour
 		CurrentWeather = Descriptor.PickRandomWeather();
 	}
 
+	public float GetMoney()
+    {
+		float res = 0;
+
+		foreach(Boat boat in _placedBoats)
+        {
+			res += (boat.Descriptor.IncomeFactor * _descriptor.RentabilityFactor);
+        }
+
+		return res;
+
+    }
+
+	public void DecayFromBoats()
+    {
+		foreach(Boat boat in _placedBoats)
+        {
+			CurrentHealth -= ((BoatDescriptor)boat.Descriptor).EcoImpactFactor; 
+        }
+    }
+
+	public void DecayNatural()
+    {
+		//TODO: random
+    }
+
 	public void OpenZoneDetails()
 	{
 		_details.gameObject.SetActive(true);
