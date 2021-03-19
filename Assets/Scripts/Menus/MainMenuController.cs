@@ -12,7 +12,7 @@ public class MainMenuController : MonoBehaviour
 
 	public void StartGame()
 	{
-		SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene("GameScene_TmpScroll");
 	}
 
 	public void QuitGame()

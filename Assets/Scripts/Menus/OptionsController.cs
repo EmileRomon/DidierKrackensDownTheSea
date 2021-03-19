@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class OptionsController : MonoBehaviour
 {
 	private Resolution[] _resolutions;
 	[SerializeField] private Button[] _previousButtons;
 	[SerializeField] private Button[] _nextButtons;
+	[SerializeField] private AudioMixer _audioMixer;
 
 	#region UI
-	[SerializeField] private Slider _slider = null;
-	[SerializeField] private TextMeshProUGUI _sliderText = null;
+	[SerializeField] private Slider _musicSlider = null;
+	[SerializeField] private TextMeshProUGUI _musicSliderText = null;
+	[SerializeField] private Slider _soundSlider = null;
+	[SerializeField] private TextMeshProUGUI _soundSliderText = null;
 	[SerializeField] private Toggle _fullscreen = null;
 	[SerializeField] private Toggle _windowed = null;
 	[SerializeField] private TMP_Dropdown _resolutionsDD = null;
@@ -28,7 +32,13 @@ public class OptionsController : MonoBehaviour
 	private void Start()
 	{
 		PopulateResolutions();
-		UpdateAudio(AudioListener.volume * 100);
+
+		float volume;
+		_audioMixer.GetFloat("musicVolume", out volume);
+		_musicSlider.value = Mathf.Pow(10, volume / 20);
+		_audioMixer.GetFloat("soundVolume", out volume);
+		_soundSlider.value = Mathf.Pow(10, volume / 20);
+
 		Screen.fullScreen = true;
 	}
 
@@ -57,11 +67,18 @@ public class OptionsController : MonoBehaviour
 		_resolutionsDD.RefreshShownValue();
 	}
 
-	public void UpdateAudio(float value)
+	public void UpdateMusicAudio(float value)
 	{
-		AudioListener.volume = value / 100.0f;
-		_slider.value = value;
-		_sliderText.text = "Volume: " + ((int)value).ToString();
+		float volume = Mathf.Log10(value) * 20;
+		_audioMixer.SetFloat("musicVolume", volume);
+		_musicSliderText.text = "Music Volume: " + ((int)(value * 100)).ToString();
+	}
+
+	public void UpdateSoundAudio(float value)
+	{
+		float volume = Mathf.Log10(value) * 20;
+		_audioMixer.SetFloat("soundVolume", volume);
+		_soundSliderText.text = "SFX Volume: " + ((int)(value * 100)).ToString();
 	}
 
 	public void UpdateResolution(int resolutionIndex)

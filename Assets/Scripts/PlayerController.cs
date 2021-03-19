@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Awake()
 	{
-		_playerHandler.Player = this;
+		if(_playerHandler != null) _playerHandler.Player = this;
 	}
 
 	public void AssignMemberToBoat(Boat boat)
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 		_availableCrewMembers.RemoveAt(availableCount - 1);
 		boat.Crew.Add(crewMember);
 
-		_crewMembersIndicator.UpdateNumber(availableCount - 1);
+		_crewMembersIndicator?.UpdateNumber(availableCount - 1);
 	}
 
 	public void RemoveMemberFromBoat(Boat boat)

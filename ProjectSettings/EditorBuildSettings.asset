@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 7bfdd40d2778b4547876eb967ab96880
+  - enabled: 1
+    path: Assets/Scenes/GameScene_TmpScroll.unity
+    guid: 54fedb3087641e543b45fad0fd5ca72b
   m_configObjects: {}
