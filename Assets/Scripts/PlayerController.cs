@@ -19,48 +19,48 @@ public class PlayerController : MonoBehaviour
     private Dictionary<string, List<CrewMember>> _crewMembers = new Dictionary<string, List<CrewMember>>();
 
     private List<Boat> _availableBoats = new List<Boat>();
-	private List<CrewMember> _availableCrewMembers = new List<CrewMember>();
+    private List<CrewMember> _availableCrewMembers = new List<CrewMember>();
 
     public List<Boat> AvailableBoats => _availableBoats;
-	public List<CrewMember> AvailableCrewMembers => _availableCrewMembers;
+    public List<CrewMember> AvailableCrewMembers => _availableCrewMembers;
 
-	[SerializeField] private CrewMembersIndicator _crewMembersIndicator;
-	[SerializeField] private PlayerHandler _playerHandler;
+    [SerializeField] private CrewMembersIndicator _crewMembersIndicator;
+    [SerializeField] private PlayerHandler _playerHandler;
 
-	private void Awake()
-	{
-		if(_playerHandler != null) _playerHandler.Player = this;
-	}
+    private void Awake()
+    {
+        if (_playerHandler != null) _playerHandler.Player = this;
+    }
 
-	public void AssignMemberToBoat(Boat boat)
-	{
-		int availableCount = _availableCrewMembers.Count;
-		if (availableCount <= 0) return;
+    public void AssignMemberToBoat(Boat boat)
+    {
+        int availableCount = _availableCrewMembers.Count;
+        if (availableCount <= 0) return;
 
-		CrewMember crewMember = _availableCrewMembers[availableCount - 1];
-		crewMember.CurrentBoat = boat;
-		_availableCrewMembers.RemoveAt(availableCount - 1);
-		boat.Crew.Add(crewMember);
+        CrewMember crewMember = _availableCrewMembers[availableCount - 1];
+        crewMember.CurrentBoat = boat;
+        _availableCrewMembers.RemoveAt(availableCount - 1);
+        boat.Crew.Add(crewMember);
 
-		_crewMembersIndicator?.UpdateNumber(availableCount - 1);
-	}
+        _crewMembersIndicator?.UpdateNumber(availableCount - 1);
+    }
 
-	public void RemoveMemberFromBoat(Boat boat)
-	{
-		int boatCrewCount = boat.Crew.Count;
-		if (boatCrewCount <= 0) return;
+    public void RemoveMemberFromBoat(Boat boat)
+    {
+        int boatCrewCount = boat.Crew.Count;
+        if (boatCrewCount <= 0) return;
 
-		int availableCount = _availableCrewMembers.Count;
+        int availableCount = _availableCrewMembers.Count;
 
-		CrewMember crewMember = boat.Crew[boatCrewCount - 1];
-		crewMember.CurrentBoat = null;
-		_availableCrewMembers.Add(crewMember);
-		boat.Crew.RemoveAt(boatCrewCount - 1);
+        CrewMember crewMember = boat.Crew[boatCrewCount - 1];
+        crewMember.CurrentBoat = null;
+        _availableCrewMembers.Add(crewMember);
+        boat.Crew.RemoveAt(boatCrewCount - 1);
 
-		_crewMembersIndicator.UpdateNumber(availableCount + 1);
-	}
+        _crewMembersIndicator.UpdateNumber(availableCount + 1);
+    }
 
-	public void AddBoat(BoatDescriptor descriptor)
+    public void AddBoat(BoatDescriptor descriptor)
     {
         Boat boat = new Boat(descriptor);
         if (_boats.ContainsKey(descriptor.ItemName))
@@ -95,8 +95,8 @@ public class PlayerController : MonoBehaviour
             members.Add(crewMember);
             _crewMembers.Add(descriptor.ItemName, members);
         }
-		_availableCrewMembers.Add(crewMember);
-		_crewMembersIndicator.UpdateNumber(_availableCrewMembers.Count);
+        _availableCrewMembers.Add(crewMember);
+        _crewMembersIndicator.UpdateNumber(_availableCrewMembers.Count);
         _itemsManager.CreateCrewItem(crewMember);
     }
     #endregion Crew
@@ -107,6 +107,10 @@ public class PlayerController : MonoBehaviour
     private float _moneyScore;
     private float _moneyAmount;
     private int _currentDay = 1;
+
+    public float MoneyScore => _moneyScore;
+    public float MoneyAmount => _moneyAmount;
+    public int CurrentDay { get => _currentDay; set => _currentDay = value; }
 
     public void PayAllBoatsMaintenance()
     {
@@ -218,5 +222,5 @@ public class PlayerController : MonoBehaviour
         foreach (BoatDescriptor boat in _boatDescriptors) AddBoat(boat);
         foreach (CrewMemberDescriptor crew in _crewDescriptors) AddCrewMember(crew);
     }
-	#endregion Debug
+    #endregion Debug
 }

@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour
     #region Player
 
     [SerializeField] PlayerController _playerController;
-    private int _day; //TODO: use the one in playercontroller
+    //private int _day; //TODO: use the one in playercontroller
 
     /// <summary>
     /// Money gain today with the boats (and the event ?)
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
 
     public void Awake()
     {
-        _day = 0;
+        //_day = 0;
 
         _zones = FindObjectsOfType<Zone>();
 
@@ -57,12 +57,14 @@ public class GameController : MonoBehaviour
 
     #region EndDay
 
+    [SerializeField] private GameOverManager _gameOver;
+
     private void CalculateProfit()
     {
         _profit = 0;
-        foreach(Zone z in _zones)
+        foreach (Zone z in _zones)
         {
-            _profit += z.GetMoney()*_price;
+            _profit += z.GetMoney() * _price;
         }
     }
 
@@ -72,13 +74,11 @@ public class GameController : MonoBehaviour
         //TODO: crew salary
 
         _cost += _dailyDebt;
-
-        
     }
 
     private void DecayFromBoats()
     {
-        foreach(Zone zone in _zones)
+        foreach (Zone zone in _zones)
         {
             zone.DecayFromBoats();
         }
@@ -86,9 +86,9 @@ public class GameController : MonoBehaviour
 
     private void DecayNatural()
     {
-        foreach(Zone zone in _zones)
+        foreach (Zone zone in _zones)
         {
-            zone.DecayNatural(); 
+            zone.DecayNatural();
         }
     }
 
@@ -111,7 +111,8 @@ public class GameController : MonoBehaviour
 
     private void PrintDebug()
     {
-        Debug.Log("Day " + _day);
+        //Debug.Log("Day " + _day);
+        Debug.Log("Day " + _playerController.CurrentDay);
         foreach (Zone z in _zones)
         {
             Debug.Log("In zone " + z.Descriptor.name + " from " + z.gameObject.name);
@@ -139,7 +140,8 @@ public class GameController : MonoBehaviour
 
         //LaunchEvents();
 
-        _day++;
+        //_day++;
+        _playerController.CurrentDay++;
 
         CalculateProfit();
         CalculateCost();
@@ -155,6 +157,12 @@ public class GameController : MonoBehaviour
         _playerController.AddToMoneyAmount(_cost *= -1);
 
         //todo: if money < 0 ?
+
+        if (_playerController.MoneyAmount < 0f)
+        {
+            _gameOver.gameObject.SetActive(true);
+            _gameOver.DisplayGameOver(_playerController.MoneyScore, _playerController.CurrentDay);
+        }
 
         PutBackBoat();
         UpdateView();
