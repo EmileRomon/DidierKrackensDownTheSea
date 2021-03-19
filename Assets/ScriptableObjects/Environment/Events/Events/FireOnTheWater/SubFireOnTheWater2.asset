@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
+  m_Name: SubFireOnTheWater2
+  m_EditorClassIdentifier: 
+  _eventName: Fire on the water
+  _eventDescription: Your crew valiantly keeps the fire at bay long enough to allow
+    some of the scientists to escape, but it appears to be a sing battle. Before
+    long you order the retreat. The survivors they were able to save are distraught
+    but grateful. You'll drop them off at the next port.
+  _eventOptions:
+  - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
+  _eventOutcomes:
+  - {fileID: 11400000, guid: 55cfa8e72858b92458142c27791b40af, type: 2}
+  _eventProbability: 0.4

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
+  m_Name: GiantAlienSpiders
+  m_EditorClassIdentifier: 
+  _eventName: Giant Alien Spiders
+  _eventDescription: 'You find a number of small boats fleeing from a ocean liner.
+    You hail them, asking what''s wrong: "Help! We''re being overrun by some sort
+    of giant alien spiders!"'
+  _eventOptions:
+  - {fileID: 11400000, guid: 51098c4b3185b9647a68358f63224b12, type: 2}
+  - {fileID: 11400000, guid: 29267acb9d9da8544abb3493844a615a, type: 2}
+  _eventOutcomes: []
+  _eventProbability: 0.1

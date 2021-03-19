@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
+  m_Name: FireOnTheWater
+  m_EditorClassIdentifier: 
+  _eventName: Fire on the water
+  _eventDescription: Your crew reports a boat on fire in the distance. It appears
+    a small fire got out of control and is threatening to destroy the boat. Looks
+    like they need your help.
+  _eventOptions: []
+  _eventOutcomes: []
+  _eventProbability: 0.4

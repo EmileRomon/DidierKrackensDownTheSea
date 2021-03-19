@@ -192,6 +192,17 @@ public class GameController : MonoBehaviour
         switch (outcome.TargetResource)
         {
             case ResourceType.Boat:
+                if (outcome.AffectOtherInZone)
+                {
+                    foreach (Boat b in target.CurrentZone.PlacedBoats)
+                    {
+                        _playerController.RemoveBoat(b);
+                    }
+                }
+                else
+                {
+                    _playerController.RemoveBoat(target);
+                }
                 break;
             case ResourceType.Crew:
                 break;
@@ -209,6 +220,12 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case ResourceType.Money:
+                float moneyLost = outcome.Value;
+                if (outcome.AffectOtherInZone)
+                {
+                    moneyLost *= target.CurrentZone.PlacedBoats.Count;
+                }
+                _playerController.AddToMoneyAmount(-moneyLost);
                 break;
             default:
                 break;

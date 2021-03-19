@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
@@ -154,6 +152,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Sold for " + amountToSell);
         AddToMoneyAmount(amountToSell);
         Boat boat = mgmtItem.Item as Boat;
+        RemoveBoat(boat);
+    }
+
+    public void RemoveBoat(Boat boat)
+    {
         if (boat != null)
         {
             _boats[boat.Descriptor.ItemName].Remove(boat);
@@ -161,7 +164,6 @@ public class PlayerController : MonoBehaviour
             {
                 _availableBoats.Remove(boat);
             }
-
             _removingBoat.Invoke(boat);
         }
     }

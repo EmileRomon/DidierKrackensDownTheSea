@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a385a1c063782c14b9157aca03ddf169, type: 3}
+  m_Name: FireOnTheWaterOption1
+  m_EditorClassIdentifier: 
+  _optionDescription: Send your crew in a small boat to help put out the fire.
+  _optionSubEvents:
+  - {fileID: 11400000, guid: 0b0c821745796054e88dfde86ecdfd3a, type: 2}
+  - {fileID: 11400000, guid: 6b2be0d597e67cc46b1dfe2e27627383, type: 2}

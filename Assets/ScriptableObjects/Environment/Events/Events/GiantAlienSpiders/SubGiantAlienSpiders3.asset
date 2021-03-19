@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
-  m_Name: GiantAlienSpiders
+  m_Name: SubGiantAlienSpiders3
   m_EditorClassIdentifier: 
   _eventName: Giant Alien Spiders
-  _eventDescription: 'You find a number of ships fleeing from a small space station.
-    You hail them, asking what''s wrong: "Help! We''re being overrun by some sort
-    of giant alien spiders!"'
+  _eventDescription: These are crazy times, but you don't have time to waist.
   _eventOptions:
-  - {fileID: 11400000, guid: 51098c4b3185b9647a68358f63224b12, type: 2}
-  - {fileID: 11400000, guid: 29267acb9d9da8544abb3493844a615a, type: 2}
-  _eventOutcomes: 
-  _eventProbability: 0.2
+  - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
+  _eventOutcomes: []
+  _eventProbability: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Event : ScriptableObject
 {
     [SerializeField] private string _eventName;
-    [SerializeField] private string _eventDescription;
+    [TextArea] [SerializeField] private string _eventDescription;
     [SerializeField] private List<EventOption> _eventOptions;
     [SerializeField] private List<EventOutcome> _eventOutcomes;
     [Range(0, 1)] [SerializeField] private float _eventProbability;
