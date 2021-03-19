@@ -17,3 +17,4 @@ MonoBehaviour:
   _maintenancePrice: 100
   _purchasePrice: 1000
   _resalePrice: 0
+  _sprite: {fileID: 21300000, guid: de6f6db5fef95954495083e80d759340, type: 3}

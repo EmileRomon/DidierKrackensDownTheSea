@@ -1868,7 +1868,8 @@ MonoBehaviour:
   _shopManager: {fileID: 11400000, guid: ee3c001caef0b2d4e8cc03081057ce3e, type: 2}
   _boatsRoot: {fileID: 9159942519706508832}
   _crewMembersRoot: {fileID: 9159942519600164184}
-  _itemPrefab: {fileID: 6041736705829834149, guid: 28d5326215579a3449f9c0fb4873140b, type: 3}
+  _boatPrefab: {fileID: 6041736705829834149, guid: 28d5326215579a3449f9c0fb4873140b, type: 3}
+  _crewMemberPrefab: {fileID: 6041736705829834149, guid: 5ad837c828611084d87fd04dcf08d209, type: 3}
   _boatDetails: {fileID: 0}
   _crewDetails: {fileID: 0}
   _playerController: {fileID: 0}

@@ -10,9 +10,9 @@ public class BoatDescriptor : IncomeGenerator
 	[SerializeField] private int _maxCrew;
 	[SerializeField] private float _ecoImpactFactor;
 
+
 	public float MaxHealth => _maxHealth;
 	public int MinCrew => _minCrew;
 	public int MaxCrew => _maxCrew;
 	public float EcoImpactFactor => _ecoImpactFactor;
-
 }

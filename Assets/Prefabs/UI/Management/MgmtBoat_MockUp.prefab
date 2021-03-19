@@ -1105,6 +1105,7 @@ MonoBehaviour:
   _itemNameText: {fileID: 1247881511604158704}
   _detailsButton: {fileID: 2086495543748803473}
   _sellButton: {fileID: 3668868190075039916}
+  _preview: {fileID: 8108436782267093420}
   _repairButton: {fileID: 1723647194039297299}
   _health: {fileID: 5386166635783457069}
 --- !u!1 &8974390113296599622

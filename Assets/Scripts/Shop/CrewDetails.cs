@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CrewDetails : ItemDetails
 {
-	public override void UpdateDetails<T>(T itemDescriptor)
+	public override void UpdateDetails<T>(T itemDescriptor, float health)
 	{
-		base.UpdateDetails(itemDescriptor);
+		base.UpdateDetails(itemDescriptor, health);
 		CrewMemberDescriptor crewDescriptor = itemDescriptor as CrewMemberDescriptor;
 		if (crewDescriptor != null)
 		{

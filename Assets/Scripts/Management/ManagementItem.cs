@@ -9,6 +9,7 @@ public abstract class ManagementItem : MonoBehaviour
 	[SerializeField] protected TextMeshProUGUI _itemNameText;
 	[SerializeField] protected Button _detailsButton;
 	[SerializeField] protected Button _sellButton;
+	[SerializeField] protected Image _preview;
 
 	protected CrewItem _item;
 
@@ -21,5 +22,6 @@ public abstract class ManagementItem : MonoBehaviour
 	{
 		_item = item;
 		_itemNameText.text = item.Descriptor.ItemName;
+		_preview.sprite = item.Descriptor.ItemSprite;
 	}
 }

@@ -12,6 +12,7 @@ public class ZoneDescriptor : ScriptableObject
 	[SerializeField] private List<Weather> _possibleWeathers;
 	[SerializeField] private List<ZoneAttribute> _attributes;
 	[SerializeField] private List<Event> _events;
+	[SerializeField] private Sprite _zoneBackground;
 	[Range(0, 1)] [SerializeField] private float _noEventProbability;
 
 	public string ZoneName => _name;
@@ -21,6 +22,7 @@ public class ZoneDescriptor : ScriptableObject
 	public List<Weather> PossibleWeathers => _possibleWeathers;
 	public List<ZoneAttribute> Attributes => _attributes;
 	public List<Event> Events => _events;
+	public Sprite ZoneBackground => _zoneBackground;
 	public float NoEventProbability => _noEventProbability;
 
 	public Weather PickRandomWeather()
