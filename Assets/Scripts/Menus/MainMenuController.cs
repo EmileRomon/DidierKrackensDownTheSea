@@ -9,12 +9,14 @@ public class MainMenuController : MonoBehaviour
 {
 	[SerializeField] private GameInfo _gameInfo;
 	[SerializeField] private TMP_InputField _companyNameIF;
+	[SerializeField] private AudioSource _playSound;
 
 	public void StartGame()
 	{
 		if(_companyNameIF.text.Length > 0 && _companyNameIF.text.Length < 20)
 		{
 			_gameInfo.CompanyName = _companyNameIF.text;
+			_playSound.Play();
 			SceneManager.LoadScene("GameScene_TmpQuentin");
 		}
 	}
