@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -24,6 +25,9 @@ public class GameController : MonoBehaviour
 
     [Header("Debt, price to pay everyday")]
     [SerializeField] private float _dailyDebt;
+
+    [SerializeField] private GameObject _prefabGame;
+    [SerializeField] private bool _miniGame;
 
 
 
@@ -131,6 +135,17 @@ public class GameController : MonoBehaviour
         Debug.Log("Profit: " + _profit);
         Debug.Log("Cost : " + _cost);
     }
+
+    public void ManageEndDay()
+    {
+        if (_miniGame)
+        {
+            GameObject _go = Instantiate(_prefabGame);
+            //prefab will call EndDay at the end of minigame
+        }
+        else EndDay();
+    }
+
 
     public void EndDay()
     {

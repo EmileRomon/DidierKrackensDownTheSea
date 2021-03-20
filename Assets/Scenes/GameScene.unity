@@ -1301,7 +1301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1761460908}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: EndDay
+        m_MethodName: ManageEndDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3597,9 +3597,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 509260115}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
+      propertyPath: _miniGame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _playerList
       value: 
       objectReference: {fileID: 1499173510}
+    - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
+      propertyPath: _prefabGame
+      value: 
+      objectReference: {fileID: 6564334339494610777, guid: 5dfa8f2fbb50f9d4faa6b19055fe5ed8, type: 3}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _eventUIManager
       value: 
@@ -6065,6 +6073,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3476360515355659432, guid: 7827d9bbc2f444349bc08173003ecb8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.699951
+      objectReference: {fileID: 0}
     - target: {fileID: 3476360515590008886, guid: 7827d9bbc2f444349bc08173003ecb8e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6106,8 +6118,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1752307360}
     m_Modifications:
+    - target: {fileID: 4200760047077344452, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200760047077344452, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200760047077344452, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200760047077344452, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4200760047698071502, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200760047817702970, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200760047817702970, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4200760047866306067, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
@@ -6212,6 +6248,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6069391846854053054, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069391847554167118, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069391847554167118, guid: 065f01e9a9f1b084c8d8495a849f5f19, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

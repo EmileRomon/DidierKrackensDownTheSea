@@ -9,9 +9,13 @@ public class FisherController : MonoBehaviour
     [SerializeField] private GameObject _foundIndicator;
     [SerializeField] private GameObject _notFoundInicator;
 
+    [SerializeField] private TMPro.TextMeshPro _textScore;
+
     [SerializeField] private float _minWait;
     [SerializeField] private float _maxWait;
     [SerializeField] private float _timeWindow;
+
+    [SerializeField] private GameObject _gameRoot;
 
 
     private int _score;
@@ -59,6 +63,7 @@ public class FisherController : MonoBehaviour
     private void GetFish()
     {
         _score++;
+        _textScore.text = ""+_score;
         _fishes[_group].EscapeAll();
     }
 
@@ -103,6 +108,11 @@ public class FisherController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space))
         {
             EndFishing();
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            FindObjectOfType<GameController>().EndDay();
+            Destroy(_gameRoot);
         }
 
         if(_fishing)
