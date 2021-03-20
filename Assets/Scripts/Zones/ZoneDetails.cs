@@ -22,19 +22,25 @@ public class ZoneDetails : MonoBehaviour
 	[SerializeField] private RectTransform _boatsRoot;
 	[SerializeField] private BoatListItem _boatPrefab;
 
-	[SerializeField] private DragDropReceptor _dragDropReceptor;
+	[SerializeField] private DragDropReceptorDetails _dragDropReceptor;
 
 	private MenuButtonHandler _menuButtonsHandler;
 
 	private void Awake()
 	{
-		_menuButtonsHandler = GetComponent<MenuButtonHandler>();	
+		_menuButtonsHandler = GetComponent<MenuButtonHandler>();
+	}
+
+	private void Start()
+	{
+		gameObject.SetActive(false);
 	}
 
 	public void UpdateDetails(Zone zone)
 	{
 		_menuButtonsHandler.OnDisplay();
 		DragDropReceptor.SetOpenZone(zone);
+		Debug.Log("OPEN COUNT: " + zone.PlacedBoats.Count);
 		_dragDropReceptor.DragDropZone = zone;
 		_name.text = zone.Descriptor.ZoneName;
 		_health.fillAmount = zone.CurrentHealth / zone.Descriptor.MaxHealth;

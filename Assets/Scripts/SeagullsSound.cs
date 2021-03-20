@@ -11,6 +11,17 @@ public class SeagullsSound : MonoBehaviour
 	private void Awake()
 	{
 		_audioSource = GetComponent<AudioSource>();
+		StartCoroutine(TriggerAudioPlay());
+	}
+
+	private IEnumerator TriggerAudioPlay()
+	{
+		while(true)
+		{
+			float waitingTime = Random.Range(8, 25);
+			yield return new WaitForSeconds(waitingTime);
+			PlaySound();
+		}
 	}
 
 	[ContextMenu("PlaySound")]

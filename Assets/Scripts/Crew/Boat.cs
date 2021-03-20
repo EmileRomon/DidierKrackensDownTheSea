@@ -37,12 +37,12 @@ public class Boat : CrewItem
 
 	public void AffectNewZone(Zone zone)
 	{
-		if(CurrentZone != null)
+		if (CurrentZone != null)
 		{
 			CurrentZone.PlacedBoats.Remove(this);
 		}
 		CurrentZone = zone;
-		if(zone!=null ) zone.PlacedBoats.Add(this);
+		if (zone != null) zone.PlacedBoats.Add(this);
 	}
 
 	public bool CheckAvailable()

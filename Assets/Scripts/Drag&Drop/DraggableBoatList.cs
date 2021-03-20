@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DraggableBoatList : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefabListItem;
+    [SerializeField] protected GameObject _prefabListItem;
 
-    [SerializeField] private PlayerController _pc;
+    [SerializeField] protected PlayerController _pc;
 
-    private void Start()
+    protected void Start()
     {
         if (_pc != null)
         {
@@ -37,7 +37,7 @@ public class DraggableBoatList : MonoBehaviour
     public void AddBoat(Boat boat)
     {
         AddNewBoat(boat);
-        if (boat.CurrentZone == null) //if no zone, go back in player list
+        if (boat.CurrentZone == null && _pc != null) //if no zone, go back in player list
         {
             _pc.AvailableBoats.Add(boat);
         }
@@ -50,7 +50,7 @@ public class DraggableBoatList : MonoBehaviour
     }
 
     [ContextMenu("Update")]
-    public void UpdateView()
+    public virtual void UpdateView()
     {
         for (int i = 0; i < transform.childCount;++i)
         {

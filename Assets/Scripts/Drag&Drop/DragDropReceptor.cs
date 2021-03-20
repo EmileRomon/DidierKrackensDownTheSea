@@ -8,13 +8,13 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
     protected Zone _zone;
     protected DraggableBoatList _list;
 
-	protected static Zone _openZone;
+	protected static Zone OpenZone;
 
 	protected void Start()
     {
         _zone = GetComponent<Zone>();
         _list = GetComponentInChildren<DraggableBoatList>();
-		_openZone = null;
+		OpenZone = null;
     }
 
 	public Zone DragDropZone
@@ -23,6 +23,7 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 		set
 		{
 			_zone = value;
+			Debug.Log("new value is " + value, this);
 		}
 	}
 
@@ -30,7 +31,7 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
     {
         DraggableBoat db = eventData.pointerDrag.GetComponent<DraggableBoat>();
 
-        if ((_openZone == _zone || _openZone == null || _zone == null) && db != null && db.Boat.CheckAvailable())
+        if (((OpenZone == null && db.Boat.CheckAvailable()) || _zone == null) && db != null)
         {
             Destroy(eventData.pointerDrag);
 
@@ -38,17 +39,17 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
                 db.RemoveFromList();
 
             db.Boat.AffectNewZone(_zone);
-            
-            if(_list!=null)
-            {
-                _list.AddBoat(db.Boat);
-            }
-        }
+
+			if (_list != null)
+			{
+				_list.AddBoat(db.Boat);
+			}
+		}
 
     }
 
 	public static void SetOpenZone(Zone zone)
 	{
-		_openZone = zone;
+		OpenZone = zone;
 	}
 }

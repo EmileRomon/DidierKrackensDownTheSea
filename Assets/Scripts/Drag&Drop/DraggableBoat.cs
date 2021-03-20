@@ -65,13 +65,21 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 
 	public void AssignMember()
 	{
-		_playerHandler.Player.AssignMemberToBoat(_boat);
-		_crewCountText.text = _boat.Crew.Count.ToString();
+		BoatDescriptor bd = (BoatDescriptor)_boat.Descriptor;
+		if (_boat.CurrentZone == null || _boat.Crew.Count < bd.MaxCrew)
+		{
+			_playerHandler.Player.AssignMemberToBoat(_boat);
+			_crewCountText.text = _boat.Crew.Count.ToString();
+		}
 	}
 
 	public void RemoveMember()
 	{
-		_playerHandler.Player.RemoveMemberFromBoat(_boat);
-		_crewCountText.text = _boat.Crew.Count.ToString();
+		BoatDescriptor bd = (BoatDescriptor)_boat.Descriptor;
+		if (_boat.CurrentZone == null || _boat.Crew.Count > bd.MinCrew)
+		{
+			_playerHandler.Player.RemoveMemberFromBoat(_boat);
+			_crewCountText.text = _boat.Crew.Count.ToString();
+		}
 	}
 }

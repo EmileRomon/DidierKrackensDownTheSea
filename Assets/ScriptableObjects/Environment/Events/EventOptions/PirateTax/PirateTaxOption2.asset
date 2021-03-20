@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a385a1c063782c14b9157aca03ddf169, type: 3}
-  m_Name: PirateTaxOption1
+  m_Name: PirateTaxOption2
   m_EditorClassIdentifier: 
   _optionDescription: 
   _optionSubEvents:

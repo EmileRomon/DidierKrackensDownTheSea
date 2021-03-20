@@ -53,7 +53,7 @@ public class Zone : MonoBehaviour
 
 	public void OpenZoneDetails()
 	{
-		_details.gameObject.SetActive(true);
+		_details.transform.GetChild(0).gameObject.SetActive(true);
 		_details.UpdateDetails(this);
 	}
 }
