@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 5928643543905878391}
   - component: {fileID: 5928643543905878388}
   - component: {fileID: 5928643543905878389}
+  - component: {fileID: 6052190239735861083}
   m_Layer: 5
   m_Name: CrewDetails
   m_TagString: Untagged
@@ -578,6 +579,19 @@ MonoBehaviour:
   _maintenancePrice: {fileID: 5928643542871984980}
   _resalePrice: {fileID: 5928643542999290359}
   _income: {fileID: 5928643544266939722}
+--- !u!114 &6052190239735861083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928643543905878387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d041ebe1ae6c91846a9362bdff94c6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsToDisable: []
 --- !u!1 &5928643544115753675
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,10 +847,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5928643543905878387}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6052190239735861083}
+        m_TargetAssemblyTypeName: MenuButtonHandler, Assembly-CSharp
+        m_MethodName: OnHide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

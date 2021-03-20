@@ -5,20 +5,32 @@ using UnityEngine.EventSystems;
 
 public class DragDropReceptor: MonoBehaviour, IDropHandler
 {
-    private Zone _zone;
-    private DraggableBoatList _list;
+    protected Zone _zone;
+    protected DraggableBoatList _list;
 
-    private void Start()
+	protected static Zone _openZone;
+
+	protected void Start()
     {
         _zone = GetComponent<Zone>();
         _list = GetComponentInChildren<DraggableBoatList>();
+		_openZone = null;
     }
 
-    public void OnDrop(PointerEventData eventData)
+	public Zone DragDropZone
+	{
+		get => _zone;
+		set
+		{
+			_zone = value;
+		}
+	}
+
+    public virtual void OnDrop(PointerEventData eventData)
     {
         DraggableBoat db = eventData.pointerDrag.GetComponent<DraggableBoat>();
 
-        if (db != null)
+        if ((_openZone == _zone || _openZone == null || _zone == null) && db != null && db.Boat.CheckAvailable())
         {
             Destroy(eventData.pointerDrag);
 
@@ -34,4 +46,9 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
         }
 
     }
+
+	public static void SetOpenZone(Zone zone)
+	{
+		_openZone = zone;
+	}
 }

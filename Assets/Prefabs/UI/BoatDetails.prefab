@@ -732,10 +732,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1554713242703311328}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4465007196537854735}
+        m_TargetAssemblyTypeName: MenuButtonHandler, Assembly-CSharp
+        m_MethodName: OnHide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1158,6 +1158,7 @@ GameObject:
   - component: {fileID: 1554713242703311356}
   - component: {fileID: 1554713242703311359}
   - component: {fileID: 1554713242703311358}
+  - component: {fileID: 4465007196537854735}
   m_Layer: 5
   m_Name: BoatDetails
   m_TagString: Untagged
@@ -1255,6 +1256,19 @@ MonoBehaviour:
   _minCrew: {fileID: 1554713241832129698}
   _maxCrew: {fileID: 1554713242374913068}
   _ecoImpact: {fileID: 1554713242516689460}
+--- !u!114 &4465007196537854735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554713242703311328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d041ebe1ae6c91846a9362bdff94c6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsToDisable: []
 --- !u!1 &1554713242704096176
 GameObject:
   m_ObjectHideFlags: 0

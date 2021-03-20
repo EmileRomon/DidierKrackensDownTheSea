@@ -24,4 +24,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3e58bb19aa47ee48bba59a85be3d43e, type: 2}
   _events:
   - {fileID: 11400000, guid: e5002da823fcf434bb53d198c29ce5b2, type: 2}
+  _zoneBackground: {fileID: 21300000, guid: 2e4c113edad3cd84b8fd8c0ce29987de, type: 3}
   _noEventProbability: 0.5

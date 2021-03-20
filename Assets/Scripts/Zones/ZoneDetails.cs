@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+[RequireComponent(typeof(MenuButtonHandler))]
 public class ZoneDetails : MonoBehaviour
 {
-	[SerializeField] private RawImage _preview;
+	[SerializeField] private Image _preview;
 	[SerializeField] private TextMeshProUGUI _name;
-	[SerializeField] private TextMeshProUGUI _health;
+	[SerializeField] private Image _health;
 	[SerializeField] private TextMeshProUGUI _profit;
 	[SerializeField] private TextMeshProUGUI _risk;
 	[SerializeField] private RectTransform _weatherRoot;
@@ -21,12 +22,25 @@ public class ZoneDetails : MonoBehaviour
 	[SerializeField] private RectTransform _boatsRoot;
 	[SerializeField] private BoatListItem _boatPrefab;
 
+	[SerializeField] private DragDropReceptor _dragDropReceptor;
+
+	private MenuButtonHandler _menuButtonsHandler;
+
+	private void Awake()
+	{
+		_menuButtonsHandler = GetComponent<MenuButtonHandler>();	
+	}
+
 	public void UpdateDetails(Zone zone)
 	{
+		_menuButtonsHandler.OnDisplay();
+		DragDropReceptor.SetOpenZone(zone);
+		_dragDropReceptor.DragDropZone = zone;
 		_name.text = zone.Descriptor.ZoneName;
-		_health.text = string.Format("{0}/{1}", zone.CurrentHealth, zone.Descriptor.MaxHealth);
-		_profit.text = zone.Descriptor.RentabilityFactor.ToString();
-		_risk.text = zone.Descriptor.DangerFactor.ToString();
+		_health.fillAmount = zone.CurrentHealth / zone.Descriptor.MaxHealth;
+		_profit.text = "Profit: " + zone.Descriptor.RentabilityFactor.ToString();
+		_risk.text = "Danger: " + zone.Descriptor.DangerFactor.ToString();
+		_preview.sprite = zone.Descriptor.ZoneBackground;
 		
 		foreach(Transform t in _weatherRoot.transform)
 		{
@@ -34,9 +48,10 @@ public class ZoneDetails : MonoBehaviour
 		}
 		foreach (Weather weather in zone.Descriptor.PossibleWeathers)
 		{
-			Image weatherImage = GameObject.Instantiate(_weatherPrefab, _weatherRoot);
-			weatherImage.sprite = weather.WeatherSprite;
-			weatherImage.color = (zone.CurrentWeather == weather) ? _enabledColor : _disabledColor;
+			Image weatherBackground = GameObject.Instantiate(_weatherPrefab, _weatherRoot);
+			Image weatherSprite = weatherBackground.rectTransform.GetChild(0).GetComponent<Image>();
+			weatherSprite.sprite = weather.WeatherSprite;
+			weatherBackground.color = (zone.CurrentWeather == weather) ? _enabledColor : _disabledColor;
 		}
 
 		foreach(Transform t in _boatsRoot.transform)
@@ -48,5 +63,10 @@ public class ZoneDetails : MonoBehaviour
 			BoatListItem db = GameObject.Instantiate(_boatPrefab, _boatsRoot);
 			db.SetBoat(b);
         }
+	}
+
+	public void OnClose()
+	{
+		DragDropReceptor.SetOpenZone(null);
 	}
 }

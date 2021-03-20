@@ -44,4 +44,10 @@ public class Boat : CrewItem
 		CurrentZone = zone;
 		if(zone!=null ) zone.PlacedBoats.Add(this);
 	}
+
+	public bool CheckAvailable()
+	{
+		BoatDescriptor bd = (BoatDescriptor)Descriptor;
+		return _crew.Count >= bd.MinCrew && _crew.Count <= bd.MaxCrew;
+	}
 }

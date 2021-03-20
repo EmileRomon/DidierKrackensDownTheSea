@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Cloudy
   m_EditorClassIdentifier: 
   _weatherName: Cloudy
-  _weatherSprite: {fileID: 21300000, guid: b758ef7216185994393ed34e2797a921, type: 3}
+  _weatherSprite: {fileID: 21300000, guid: 63f234b2af564fe43920f81ad23ad0a8, type: 3}
+  _riskIncrease: 0
+  _profitIncrease: 0
