@@ -58,6 +58,13 @@ public class PlayerController : MonoBehaviour
         _crewMembersIndicator.UpdateNumber(availableCount + 1);
     }
 
+    public void KillMemberFromBoat(Boat boat)
+    {
+        int boatCrewCount = boat.Crew.Count;
+        if (boatCrewCount <= 0) return;
+        boat.Crew.RemoveAt(boatCrewCount - 1);
+    }
+
     public void AddBoat(BoatDescriptor descriptor)
     {
         Boat boat = new Boat(descriptor);
@@ -212,6 +219,14 @@ public class PlayerController : MonoBehaviour
         }
         return _moneyAmount;
     }
+
+    public int NextDay()
+    {
+        _currentDay++;
+        _scoresUIManager.UpdateDaysCounter(_currentDay);
+        return CurrentDay;
+    }
+
     #endregion Money
 
     #region Debug

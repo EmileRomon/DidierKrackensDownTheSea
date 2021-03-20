@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -153,10 +152,10 @@ public class GameController : MonoBehaviour
 
         //if _playerCOntrooler.Money<0 then gameover
 
-        //LaunchEvents();
+        LaunchEvents();
 
         //_day++;
-        _playerController.CurrentDay++;
+        _playerController.NextDay();
 
         CalculateProfit();
         CalculateCost();
@@ -220,27 +219,38 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case ResourceType.Crew:
+                if (outcome.AffectOtherInZone)
+                {
+                    foreach (Boat b in target.CurrentZone.PlacedBoats)
+                    {
+                        _playerController.KillMemberFromBoat(b);
+                    }
+                }
+                else
+                {
+                    _playerController.KillMemberFromBoat(target);
+                }
                 break;
             case ResourceType.Health:
                 if (outcome.AffectOtherInZone)
                 {
                     foreach (Boat b in target.CurrentZone.PlacedBoats)
                     {
-                        b.CurrentHealth -= outcome.Value;
+                        b.CurrentHealth += outcome.Value;
                     }
                 }
                 else
                 {
-                    target.CurrentHealth -= outcome.Value;
+                    target.CurrentHealth += outcome.Value;
                 }
                 break;
             case ResourceType.Money:
-                float moneyLost = outcome.Value;
+                float moneyGain = outcome.Value;
                 if (outcome.AffectOtherInZone)
                 {
-                    moneyLost *= target.CurrentZone.PlacedBoats.Count;
+                    moneyGain *= target.CurrentZone.PlacedBoats.Count;
                 }
-                _playerController.AddToMoneyAmount(-moneyLost);
+                _playerController.AddToMoneyAmount(moneyGain);
                 break;
             default:
                 break;

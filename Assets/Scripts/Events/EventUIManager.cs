@@ -7,6 +7,7 @@ public class EventUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _eventNameText;
     [SerializeField] private TextMeshProUGUI _eventDescriptionText;
     [SerializeField] private TextMeshProUGUI _eventOutcomesText;
+    [SerializeField] private GameObject _Container;
     [SerializeField] private Transform _optionsContainer;
     [SerializeField] private EventOptionElementController _optionPrefab;
 
@@ -27,7 +28,7 @@ public class EventUIManager : MonoBehaviour
 
     public void DisplayAllEvents()
     {
-        gameObject.SetActive(true);
+        _Container.SetActive(true);
         DisplayEvent();
     }
 
@@ -35,14 +36,14 @@ public class EventUIManager : MonoBehaviour
     {
         if (eventsToDisplay.First == null)
         {
-            gameObject.SetActive(false);
+            _Container.SetActive(false);
             return;
         }
         Event eventToDisplay = eventsToDisplay.First.Value.EventToApply;
         Boat target = eventsToDisplay.First.Value.Target;
         eventsToDisplay.RemoveFirst();
 
-        _eventNameText.text = string.Format("{0} -{1}, {2}", eventToDisplay.EventName, target.CurrentZone, target.Descriptor.ItemName);
+        _eventNameText.text = string.Format("{0} -{1}, {2}", eventToDisplay.EventName, target.CurrentZone.Descriptor.ZoneName, target.Descriptor.ItemName);
         _eventDescriptionText.text = eventToDisplay.EventDescription;
 
         _eventOutcomesText.text = "";

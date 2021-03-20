@@ -16,6 +16,9 @@ MonoBehaviour:
   _eventDescription: Your crew reports a boat on fire in the distance. It appears
     a small fire got out of control and is threatening to destroy the boat. Looks
     like they need your help.
-  _eventOptions: []
+  _eventOptions:
+  - {fileID: 11400000, guid: 9f48422e91af50643833e4006dcf2740, type: 2}
+  - {fileID: 11400000, guid: a5aaf6d3f76b46841b9d7c8b38b4217a, type: 2}
+  - {fileID: 11400000, guid: 44e7a039a4bfd6d45ad5b9ae06655e02, type: 2}
   _eventOutcomes: []
   _eventProbability: 0.4
