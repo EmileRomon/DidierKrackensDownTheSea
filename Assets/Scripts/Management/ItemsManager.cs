@@ -57,7 +57,11 @@ public class ItemsManager : MonoBehaviour
 
 	private void ShowDetails<T>(ItemDetails mgmtDetails, ManagementItem item) where T : IncomeGenerator
 	{
-		mgmtDetails.gameObject.SetActive(true);
-		mgmtDetails.UpdateDetails(item.Item.Descriptor);
+		Boat boat = (Boat)item.Item;
+		if(boat != null)
+		{
+			mgmtDetails.gameObject.SetActive(true);
+			mgmtDetails.UpdateDetails(item.Item.Descriptor, boat.CurrentHealth);
+		}
 	}
 }

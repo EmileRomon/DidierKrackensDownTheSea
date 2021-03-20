@@ -7,6 +7,7 @@ using TMPro;
 public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private TextMeshProUGUI _itemNameText;
+	[SerializeField] private TextMeshProUGUI _crewCountText;
     [SerializeField] private UnityEngine.UI.Image _image; 
    
     private RectTransform _rectTransform;
@@ -34,12 +35,14 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
         BoatDescriptor bd = (BoatDescriptor)boat.Descriptor;
 
         _itemNameText.text = bd.ItemName;
+		_crewCountText.text = _boat.Crew.Count.ToString();
+		_image.sprite = boat.Descriptor.ItemSprite;
     }
 
     public void RemoveFromList()
     {
         _boatList.RemoveBoat(_boat);
-    }
+	}
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -63,10 +66,12 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 	public void AssignMember()
 	{
 		_playerHandler.Player.AssignMemberToBoat(_boat);
+		_crewCountText.text = _boat.Crew.Count.ToString();
 	}
 
 	public void RemoveMember()
 	{
 		_playerHandler.Player.RemoveMemberFromBoat(_boat);
+		_crewCountText.text = _boat.Crew.Count.ToString();
 	}
 }
