@@ -16,7 +16,7 @@ MonoBehaviour:
   _eventDescription: You notice an old oil tanker in distress. The tanker's hull
     is damaged and a large flow of fuel is pouring out of it.
   _eventOptions:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 6d40fdd1a7eb6f14397f64bd8a0b97cf, type: 2}
+  - {fileID: 11400000, guid: d8cf273db598e7944a2fe321fd4067ff, type: 2}
   _eventOutcomes: []
   _eventProbability: 0.4

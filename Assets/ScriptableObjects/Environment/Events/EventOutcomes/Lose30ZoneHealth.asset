@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244d80e99b20a7d49acb66d48351c64f, type: 3}
   m_Name: Lose30ZoneHealth
   m_EditorClassIdentifier: 
-  _targetResource: 2
-  _value: 100
+  _targetResource: 4
+  _value: -30
   _affectOtherInZone: 0
