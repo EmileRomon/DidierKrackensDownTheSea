@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
     #region Player
 
     [SerializeField] PlayerController _playerController;
-	public PlayerController Player => _playerController;
+    public PlayerController Player => _playerController;
     //private int _day; //TODO: use the one in playercontroller
 
     /// <summary>
@@ -37,19 +37,19 @@ public class GameController : MonoBehaviour
     #region Zones
 
     private List<Zone> _zones;
-	private List<Zone> _zonesRemoved = new List<Zone>();
-	public List<Zone> Zones => _zones;
-	public List<Zone> ZonesRemoved => _zonesRemoved;
+    private List<Zone> _zonesRemoved = new List<Zone>();
+    public List<Zone> Zones => _zones;
+    public List<Zone> ZonesRemoved => _zonesRemoved;
 
     private void RemoveDeadZones()
     {
-		_zonesRemoved.Clear();
+        _zonesRemoved.Clear();
         for (int i = _zones.Count - 1; i >= 0; i--)
         {
             if (_zones[i].CurrentHealth <= 0f)
             {
                 _zones[i].gameObject.SetActive(false);
-				_zonesRemoved.Add(_zones[i]);
+                _zonesRemoved.Add(_zones[i]);
                 _zones.RemoveAt(i);
             }
         }
@@ -74,9 +74,8 @@ public class GameController : MonoBehaviour
         Debug.Assert(_price != 0, "Price of fish no set");
         Debug.Assert(_dailyDebt != 0, "Daily debt not set");
 
-		_eventUIManager.OnDisplayEnd.AddListener(_endDayRecap.EndDay);
-//		_eventUIManager.OnDisplayEnd.AddListener(PutBackBoat);
-		StartDay();
+        _eventUIManager.OnDisplayEnd.AddListener(LateEndDay);
+        StartDay();
     }
 
     #endregion
@@ -84,7 +83,7 @@ public class GameController : MonoBehaviour
     #region EndDay
 
     [SerializeField] private GameOverManager _gameOver;
-	[SerializeField] private EndDayRecap _endDayRecap;
+    [SerializeField] private EndDayRecap _endDayRecap;
 
     private void CalculateProfit()
     {
@@ -122,11 +121,11 @@ public class GameController : MonoBehaviour
     private void PutBackBoat()
     {
 
-		foreach (Zone z in _zones)
+        foreach (Zone z in _zones)
         {
             foreach (Boat boat in z.PlacedBoats)
             {
-				boat.CurrentZone = null;
+                boat.CurrentZone = null;
                 _playerController.AvailableBoats.Add(boat);
                 while (boat.Crew.Count > 0)
                 {
@@ -175,18 +174,15 @@ public class GameController : MonoBehaviour
         else EndDay();
     }
 
-	public void StartDay()
-	{
-		_endDayRecap.StartDay();
-	}
+    public void StartDay()
+    {
+        _endDayRecap.StartDay();
+    }
 
     public void EndDay()
     {
         PrintDebug();
 
-        //if _playerCOntrooler.Money<0 then gameover
-
-        //_day++;
         _playerController.NextDay();
 
         CalculateProfit();
@@ -200,17 +196,21 @@ public class GameController : MonoBehaviour
         _playerController.AddToMoneyAmount(_profit);
         _playerController.AddToMoneyAmount(_cost *= -1);
 
-
-        //todo: if money < 0 ?
         if (_playerController.MoneyAmount < 0f)
         {
             DisplayGameOver(GameOverType.NoMoneyLeft);
         }
 
-		LaunchEvents();
-		PutBackBoat();
+        LaunchEvents();
 
-		UpdateView();
+    }
+
+    private void LateEndDay()
+    {
+        _endDayRecap.EndDay();
+        PutBackBoat();
+
+        UpdateView();
         RemoveDeadZones();
 
         if (_zones.Count <= 0)

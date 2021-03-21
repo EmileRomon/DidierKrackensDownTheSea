@@ -15,8 +15,7 @@ public class EventOutcome : ScriptableObject
 
     public override string ToString()
     {
-        //TODO if _affectOtherInZone
-        return _targetResource switch
+        string str = _targetResource switch
         {
             ResourceType.Crew => _value + " crew member",
             ResourceType.Boat => _value + " boat",
@@ -25,5 +24,10 @@ public class EventOutcome : ScriptableObject
             ResourceType.ZoneHealth => _value + " zone health",
             _ => "",
         };
+        if (_affectOtherInZone)
+        {
+            str += " for each boat in the zone";
+        }
+        return str;
     }
 }
