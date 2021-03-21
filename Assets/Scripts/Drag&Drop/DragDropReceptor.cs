@@ -31,7 +31,7 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
     {
         DraggableBoat db = eventData.pointerDrag.GetComponent<DraggableBoat>();
 
-        if (((OpenZone == null && db.Boat.CheckAvailable()) || _zone == null) && db != null)
+        if (db != null && ((OpenZone == null && db.Boat.CheckAvailable()) || _zone == null))
         {
             Destroy(eventData.pointerDrag);
 

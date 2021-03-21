@@ -115,7 +115,11 @@ public class GameController : MonoBehaviour
             foreach (Boat boat in z.PlacedBoats)
             {
                 _playerController.AvailableBoats.Add(boat);
-            }
+				while (boat.Crew.Count > 0)
+				{
+					_playerController.RemoveMemberFromBoat(boat);
+				}
+			}
             z.PlacedBoats.Clear();
         }
     }

@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3398847873951589376}
         m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
@@ -4635,7 +4635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3398847873951589376}
         m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
