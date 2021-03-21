@@ -16,5 +16,5 @@ MonoBehaviour:
   _eventDescription: You ignore the oil tanker and get back to work.
   _eventOptions: []
   _eventOutcomes:
-  - {fileID: 11400000, guid: fdcbc3084f13b454ca27ccae94920a87, type: 2}
+  - {fileID: 11400000, guid: e931983c15426be4f8e20177ea5f4d42, type: 2}
   _eventProbability: 1
