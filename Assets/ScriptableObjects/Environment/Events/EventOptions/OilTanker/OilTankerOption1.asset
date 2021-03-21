@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244d80e99b20a7d49acb66d48351c64f, type: 3}
-  m_Name: Lose100Money
+  m_Script: {fileID: 11500000, guid: a385a1c063782c14b9157aca03ddf169, type: 3}
+  m_Name: OilTankerOption1
   m_EditorClassIdentifier: 
-  _targetResource: 2
-  _value: -100
-  _affectOtherInZone: 1
+  _optionDescription: Help with the repairs.
+  _optionSubEvents:
+  - {fileID: 0}
