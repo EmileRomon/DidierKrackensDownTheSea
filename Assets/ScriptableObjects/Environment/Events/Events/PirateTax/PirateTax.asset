@@ -17,7 +17,7 @@ MonoBehaviour:
     area is under our protection. If you and your friends want to fish here, you
     have to pay the price."
   _eventOptions:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: edafd8033dfc97c4c96dbebd1aa1dd33, type: 2}
+  - {fileID: 11400000, guid: a7ae5c6a5ff339340b1faacd49fcea8e, type: 2}
   _eventOutcomes: []
   _eventProbability: 0.8

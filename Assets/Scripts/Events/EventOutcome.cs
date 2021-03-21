@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ResourceType { Boat, Crew, Money, Health };
+public enum ResourceType { Boat, Crew, Money, Health, ZoneHealth };
 
 [CreateAssetMenu(fileName = "EventOutcome", menuName = "Environment/Events/EventOutcome")]
 public class EventOutcome : ScriptableObject
@@ -21,6 +21,7 @@ public class EventOutcome : ScriptableObject
             ResourceType.Boat => _value + " boat",
             ResourceType.Health => _value + " health",
             ResourceType.Money => "$" + _value,
+            ResourceType.ZoneHealth => _value + " zone health",
             _ => "",
         };
     }

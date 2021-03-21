@@ -14,6 +14,8 @@ public class ZoneDescriptor : ScriptableObject
 	[SerializeField] private List<Event> _events;
 	[SerializeField] private Sprite _zoneBackground;
 	[Range(0, 1)] [SerializeField] private float _noEventProbability;
+	[SerializeField] private float _ecoFragilityFactor;
+	[SerializeField] private Vector2 _naturalDecayRange;
 
 	public string ZoneName => _name;
 	public float MaxHealth => _maxHealth;
@@ -24,6 +26,8 @@ public class ZoneDescriptor : ScriptableObject
 	public List<Event> Events => _events;
 	public Sprite ZoneBackground => _zoneBackground;
 	public float NoEventProbability => _noEventProbability;
+	public float EcoFragility => _ecoFragilityFactor;
+	public Vector2 NaturalDecayRange =>_naturalDecayRange;
 
 	public Weather PickRandomWeather()
 	{

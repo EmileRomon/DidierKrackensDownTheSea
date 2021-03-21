@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385a1c063782c14b9157aca03ddf169, type: 3}
   m_Name: PirateTaxOption2
   m_EditorClassIdentifier: 
-  _optionDescription: 
+  _optionDescription: Reject their 'offer'.
   _optionSubEvents:
-  - {fileID: 11400000, guid: 4f79b1b9fb9155e4099bb96d075bd4f4, type: 2}
+  - {fileID: 11400000, guid: f27bb2efd67a2d94d858127356ce0957, type: 2}

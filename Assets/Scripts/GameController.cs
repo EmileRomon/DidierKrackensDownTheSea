@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -34,7 +35,19 @@ public class GameController : MonoBehaviour
 
     #region Zones
 
-    private Zone[] _zones;
+    private List<Zone> _zones;
+
+    private void RemoveDeadZones()
+    {
+        for (int i = _zones.Count - 1; i >= 0; i--)
+        {
+            if (_zones[i].CurrentHealth <= 0f)
+            {
+                _zones[i].gameObject.SetActive(false);
+                _zones.RemoveAt(i);
+            }
+        }
+    }
 
     #endregion
 
@@ -50,7 +63,7 @@ public class GameController : MonoBehaviour
     {
         //_day = 0;
 
-        _zones = FindObjectsOfType<Zone>();
+        _zones = new List<Zone>(FindObjectsOfType<Zone>());
 
         Debug.Assert(_price != 0, "Price of fish no set");
         Debug.Assert(_dailyDebt != 0, "Daily debt not set");
@@ -180,6 +193,7 @@ public class GameController : MonoBehaviour
 
         PutBackBoat();
         UpdateView();
+        RemoveDeadZones();
     }
 
     #region Event
@@ -202,7 +216,6 @@ public class GameController : MonoBehaviour
 
     public void ApplyOutcomeEffect(EventOutcome outcome, Boat target)
     {
-        //TODO
         switch (outcome.TargetResource)
         {
             case ResourceType.Boat:
@@ -251,6 +264,9 @@ public class GameController : MonoBehaviour
                     moneyGain *= target.CurrentZone.PlacedBoats.Count;
                 }
                 _playerController.AddToMoneyAmount(moneyGain);
+                break;
+            case ResourceType.ZoneHealth:
+                target.CurrentZone.CurrentHealth -= outcome.Value;
                 break;
             default:
                 break;
