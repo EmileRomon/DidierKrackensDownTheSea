@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     [Header("Debt, price to pay everyday")]
     [SerializeField] private float _dailyDebt;
 
-    [SerializeField] private GameObject _prefabGame;
+    [SerializeField] private MiniGameController _prefabGame;
     [SerializeField] private bool _miniGame;
 
 
@@ -65,6 +65,8 @@ public class GameController : MonoBehaviour
 
     #region Unity
 
+    [SerializeField]  private CanvasGroup _canvasGroup;
+
     public void Awake()
     {
         //_day = 0;
@@ -84,6 +86,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameOverManager _gameOver;
     [SerializeField] private EndDayRecap _endDayRecap;
+
+
+    //the numeber of fish fished
+    private int _minigameScore;
+    public int MiniGameScore { get { return _minigameScore; } set { _minigameScore = value; } }
 
     private void CalculateProfit()
     {
@@ -168,8 +175,13 @@ public class GameController : MonoBehaviour
     {
         if (_miniGame)
         {
-            GameObject _go = Instantiate(_prefabGame);
+            _canvasGroup.alpha = 0;
+            _canvasGroup.blocksRaycasts = false;
+            MiniGameController mgc = Instantiate(_prefabGame);
             //prefab will call EndDay at the end of minigame
+
+            mgc.SetWeather(MiniGameController.MiniGameWeather.SUNNY); //todo
+            mgc.SetTime(90); //1:30
         }
         else EndDay();
     }
@@ -181,6 +193,8 @@ public class GameController : MonoBehaviour
 
     public void EndDay()
     {
+        _canvasGroup.alpha=1;
+        _canvasGroup.blocksRaycasts = true;
         PrintDebug();
 
         _playerController.NextDay();

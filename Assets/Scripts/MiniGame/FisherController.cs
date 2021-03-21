@@ -15,10 +15,9 @@ public class FisherController : MonoBehaviour
     [SerializeField] private float _maxWait;
     [SerializeField] private float _timeWindow;
 
-    [SerializeField] private GameObject _gameRoot;
-
 
     private int _score;
+    public int Score => _score;
 
     private Animator _animator;
     private Vector3 _movement;
@@ -108,11 +107,6 @@ public class FisherController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space))
         {
             EndFishing();
-        }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            FindObjectOfType<GameController>().EndDay();
-            Destroy(_gameRoot);
         }
 
         if(_fishing)
