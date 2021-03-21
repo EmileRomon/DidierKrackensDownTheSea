@@ -67,7 +67,7 @@ public class EventUIManager : MonoBehaviour
         }
     }
 
-    public void LoadRandomEvent(List<Event> events, Boat eventTarget, bool displayImmediately = false)
+    public Event LoadRandomEvent(List<Event> events, Boat eventTarget, bool displayImmediately = false)
     {
         Event e = PickRandomEvent(events);
         EventTarget et = new EventTarget(e, eventTarget);
@@ -86,6 +86,7 @@ public class EventUIManager : MonoBehaviour
         {
             DisplayEvent();
         }
+        return e;
     }
 
     private Event PickRandomEvent(List<Event> events)

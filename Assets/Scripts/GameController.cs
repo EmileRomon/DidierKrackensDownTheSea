@@ -115,11 +115,11 @@ public class GameController : MonoBehaviour
             foreach (Boat boat in z.PlacedBoats)
             {
                 _playerController.AvailableBoats.Add(boat);
-				while (boat.Crew.Count > 0)
-				{
-					_playerController.RemoveMemberFromBoat(boat);
-				}
-			}
+                while (boat.Crew.Count > 0)
+                {
+                    _playerController.RemoveMemberFromBoat(boat);
+                }
+            }
             z.PlacedBoats.Clear();
         }
     }
@@ -207,11 +207,13 @@ public class GameController : MonoBehaviour
     {
         foreach (Zone z in _zones)
         {
+            List<Event> events = new List<Event>(z.Descriptor.Events);
             foreach (Boat boat in z.PlacedBoats)
             {
                 if (Random.value > z.Descriptor.NoEventProbability)
                 {
-                    _eventUIManager.LoadRandomEvent(z.Descriptor.Events, boat, false);
+                    Event e = _eventUIManager.LoadRandomEvent(events, boat, false);
+                    events.Remove(e);
                 }
             }
         }
