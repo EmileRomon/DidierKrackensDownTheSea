@@ -33,8 +33,6 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 
         if (db != null && ((OpenZone == null && db.Boat.CheckAvailable()) || _zone == null))
         {
-            Destroy(eventData.pointerDrag);
-
             if (db.Boat.CurrentZone == null)
                 db.RemoveFromList();
 
@@ -44,9 +42,11 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 			{
 				_list.AddBoat(db.Boat);
 			}
+
+			Destroy(eventData.pointerDrag);
 		}
 
-    }
+	}
 
 	public static void SetOpenZone(Zone zone)
 	{
