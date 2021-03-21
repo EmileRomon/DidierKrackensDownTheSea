@@ -15,6 +15,7 @@ public class EventOutcome : ScriptableObject
 
     public override string ToString()
     {
+        //TODO if _affectOtherInZone
         return _targetResource switch
         {
             ResourceType.Crew => _value + " crew member",

@@ -188,16 +188,27 @@ public class GameController : MonoBehaviour
         _playerController.AddToMoneyAmount(_cost *= -1);
 
         //todo: if money < 0 ?
-
         if (_playerController.MoneyAmount < 0f)
         {
-            _gameOver.gameObject.SetActive(true);
-            _gameOver.DisplayGameOver(_playerController.MoneyScore, _playerController.CurrentDay);
+            DisplayGameOver(GameOverType.NoMoneyLeft);
         }
 
+        //TODO Wait the end of the events before moving the boats
         PutBackBoat();
         UpdateView();
         RemoveDeadZones();
+
+        if (_zones.Count <= 0)
+        {
+            DisplayGameOver(GameOverType.NoZoneleft);
+        }
+    }
+
+    private void DisplayGameOver(GameOverType type)
+    {
+        _gameOver.gameObject.SetActive(true);
+        _gameOver.DisplayGameOver(_playerController.MoneyScore, _playerController.CurrentDay, type);
+
     }
 
     #region Event
