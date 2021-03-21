@@ -18,7 +18,7 @@ public class SeagullsSound : MonoBehaviour
 	{
 		while(true)
 		{
-			float waitingTime = Random.Range(8, 25);
+			float waitingTime = Random.Range(15, 30);
 			yield return new WaitForSeconds(waitingTime);
 			PlaySound();
 		}

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventUIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EventUIManager : MonoBehaviour
     [SerializeField] private EventOptionElementController _optionPrefab;
 
     [SerializeField] private GameController _gameController;
+
+	public UnityEvent OnDisplayEnd;
 
     private class EventTarget
     {
@@ -37,6 +40,7 @@ public class EventUIManager : MonoBehaviour
         if (eventsToDisplay.First == null)
         {
             _Container.SetActive(false);
+			OnDisplayEnd.Invoke();
             return;
         }
         Event eventToDisplay = eventsToDisplay.First.Value.EventToApply;

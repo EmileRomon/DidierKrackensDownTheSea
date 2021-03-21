@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameInfo : ScriptableObject
 {
 	private string _companyName = "";
+	private PlayerController _playerController = null;
+	public PlayerController Player { get; set; }
 
 	public string CompanyName
 	{

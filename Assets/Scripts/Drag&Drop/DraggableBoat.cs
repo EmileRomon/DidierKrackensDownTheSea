@@ -19,7 +19,7 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 
     public Boat Boat => _boat;
 
-	[SerializeField] private PlayerHandler _playerHandler;
+	[SerializeField] private GameInfo _gameInfo;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 		BoatDescriptor bd = (BoatDescriptor)_boat.Descriptor;
 		if (_boat.CurrentZone == null || _boat.Crew.Count < bd.MaxCrew)
 		{
-			_playerHandler.Player.AssignMemberToBoat(_boat);
+			_gameInfo.Player.AssignMemberToBoat(_boat);
 			_crewCountText.text = _boat.Crew.Count.ToString();
 		}
 	}
@@ -78,7 +78,7 @@ public class DraggableBoat : BoatListItem, IBeginDragHandler, IDragHandler, IEnd
 		BoatDescriptor bd = (BoatDescriptor)_boat.Descriptor;
 		if (_boat.CurrentZone == null || _boat.Crew.Count > bd.MinCrew)
 		{
-			_playerHandler.Player.RemoveMemberFromBoat(_boat);
+			_gameInfo.Player.RemoveMemberFromBoat(_boat);
 			_crewCountText.text = _boat.Crew.Count.ToString();
 		}
 	}
