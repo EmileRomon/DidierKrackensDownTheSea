@@ -10,7 +10,7 @@ public class FishController : MonoBehaviour
 
     private float _saveAnimSpeed;
 
-    [SerializeField] Vector3 _escapePosition;
+    [SerializeField] Vector3 _offsetEscapePosition;
     [SerializeField] Vector3 _escapeRotation;
     private Quaternion _escapeQuaternion;
 
@@ -57,7 +57,7 @@ public class FishController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_escape) transform.position = Vector3.MoveTowards(transform.position, _escapePosition, Time.deltaTime * _speed);
+        if (_escape) transform.position = Vector3.MoveTowards(transform.position, _position+ _offsetEscapePosition, Time.deltaTime * _speed);
         else transform.position = Vector3.MoveTowards(transform.position, _position, Time.deltaTime * _speed);
     }
 }
