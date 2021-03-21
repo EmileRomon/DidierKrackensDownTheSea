@@ -5,6 +5,9 @@ public class Zone : MonoBehaviour
 {
     [SerializeField] private ZoneDescriptor _descriptor;
     [SerializeField] private ZoneDetails _details;
+	private float _currentDayIncome = 0;
+
+	public float CurrentDayIncome => _currentDayIncome;
 
     public ZoneDescriptor Descriptor => _descriptor;
     public float CurrentHealth { get; set; }
@@ -24,18 +27,20 @@ public class Zone : MonoBehaviour
         CurrentWeather = Descriptor.PickRandomWeather();
     }
 
-    public float GetMoney()
+    public float GetMoney(float price)
     {
-        float res = 0;
+		_currentDayIncome = 0;
 
         foreach (Boat boat in _placedBoats)
         {
-            res += (boat.Descriptor.IncomeFactor * _descriptor.RentabilityFactor);
+			_currentDayIncome += (boat.Descriptor.IncomeFactor * _descriptor.RentabilityFactor);
         }
 
-        return res;
+		_currentDayIncome *= price;
+		return _currentDayIncome;
 
-    }
+
+	}
 
     public void DecayFromBoats()
     {

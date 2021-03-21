@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
     public List<CrewMember> AvailableCrewMembers => _availableCrewMembers;
 
     [SerializeField] private CrewMembersIndicator _crewMembersIndicator;
-    [SerializeField] private PlayerHandler _playerHandler;
+    [SerializeField] private GameInfo _gameInfo;
 
     private void Awake()
     {
-        if (_playerHandler != null) _playerHandler.Player = this;
+        if (_gameInfo != null) _gameInfo.Player = this;
     }
 
     public void AssignMemberToBoat(Boat boat)

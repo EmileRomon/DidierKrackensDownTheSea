@@ -43,3 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2378d656a2a4a843a00ddb896be285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _addingBoat:
+    m_PersistentCalls:
+      m_Calls: []
+  _removingBoat:
+    m_PersistentCalls:
+      m_Calls: []
+  _crewMembersIndicator: {fileID: 0}
+  _gameInfo: {fileID: 11400000, guid: 3e26f7d1af8b6c34cb881533f0f3695b, type: 2}
+  _itemsManager: {fileID: 0}
+  _scoresUIManager: {fileID: 0}
+  _boatDescriptors: []
+  _crewDescriptors: []
