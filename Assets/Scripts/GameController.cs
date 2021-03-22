@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
     //the numeber of fish fished
     private int _minigameScore;
     public int MiniGameScore { get { return _minigameScore; } set { _minigameScore = value; } }
-    public float MiniGameMoney { get { return _minigameScore * _playerController.CurrentZone.Descriptor.RentabilityFactor * _price; } }
+    public float MiniGameMoney { get { return (_minigameScore/20.0f) * _playerController.CurrentZone.Descriptor.RentabilityFactor * _price; } }
     public bool DidPlayMiniGame { get; set; }
 
     private void CalculateProfit()
@@ -195,8 +195,11 @@ public class GameController : MonoBehaviour
             MiniGameController mgc = Instantiate(_prefabGame);
             //prefab will call EndDay at the end of minigame
 
-            mgc.SetWeather(MiniGameController.MiniGameWeather.SUNNY); //todo
-            mgc.SetTime(90); //1:30
+            if (_playerController.CurrentZone.CurrentWeather.RiskIncrease > 1)
+                mgc.SetWeather(MiniGameController.MiniGameWeather.RAINY);
+            else
+                mgc.SetWeather(MiniGameController.MiniGameWeather.SUNNY); //todo
+            mgc.SetTime(60); //1:30
         }
         else
         {

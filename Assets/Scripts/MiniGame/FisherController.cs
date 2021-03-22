@@ -109,7 +109,12 @@ public class FisherController : MonoBehaviour
             EndFishing();
         }
 
-        if(_fishing)
+        if (_movement.x < 0 && transform.position.x <= -8)
+            _movement.x = 0;
+        else if (_movement.x > 0 && transform.position.x >= 8)
+            _movement.x = 0;
+
+        if (_fishing)
         {
             if((_timer+=Time.deltaTime)>=_waitingTime)
             {
