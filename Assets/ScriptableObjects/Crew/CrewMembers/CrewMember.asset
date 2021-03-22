@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Crew Member
   _incomeFactor: 1
-  _maintenancePrice: 100
-  _purchasePrice: 1000
+  _maintenancePrice: 50
+  _purchasePrice: 50
   _resalePrice: 0
   _sprite: {fileID: 21300000, guid: 568c862fb36e0bf44a3aad520a2ee79f, type: 3}

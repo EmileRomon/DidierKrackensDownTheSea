@@ -13,13 +13,13 @@ public class DraggableBoatList : MonoBehaviour
     {
         if (_pc != null)
         {
-            foreach (Boat b in _pc.AvailableBoats)
+            /*foreach (Boat b in _pc.AvailableBoats)
             {
                 GameObject go = Instantiate(_prefabListItem, transform);
                 BoatListItem bli = go.GetComponent<BoatListItem>();
                 Debug.Assert(bli != null);
                 bli.SetBoat(b);
-            }
+            }*/
         }
     }
 

@@ -450,6 +450,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5370451538177870886, guid: a1ff925477e653f4cb15c498a8380249, type: 3}
+      propertyPath: _moneyAmount
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370451538177870886, guid: a1ff925477e653f4cb15c498a8380249, type: 3}
       propertyPath: _itemsManager
       value: 
       objectReference: {fileID: 1028523828}
@@ -1445,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _price
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _gameOver
@@ -1457,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _dailyDebt
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
       propertyPath: _playerList

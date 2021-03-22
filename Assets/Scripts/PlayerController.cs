@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
         _scoresUIManager.UpdateMoneyCounter(MoneyAmount);
         _scoresUIManager.UpdateScoreCounter(MoneyScore);
         _crewMembersIndicator.UpdateNumber(AvailableCrewMembers.Count);
+
+        AddItems();
     }
 
     public void AssignMemberToBoat(Boat boat)
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ItemsManager _itemsManager;
     [SerializeField] private ScoresUIManager _scoresUIManager;
     private float _moneyScore;
-    private float _moneyAmount = 9999999;
+    [SerializeField] private float _moneyAmount;
     private int _currentDay = 1;
 
     public float MoneyScore => _moneyScore;
