@@ -22,6 +22,8 @@ public class ZoneDetails : MonoBehaviour
 	[SerializeField] private RectTransform _boatsRoot;
 	[SerializeField] private BoatListItem _boatPrefab;
 
+	[SerializeField] private GameObject _playerBoatPrefab;
+
 	[SerializeField] private DragDropReceptorDetails _dragDropReceptor;
 	[SerializeField] private GameInfo _gameInfo;
 
@@ -75,6 +77,7 @@ public class ZoneDetails : MonoBehaviour
 		{
 			//TODO
 			Debug.Log("Bateau du joueur à afficher dans ZoneDetails");
+			GameObject.Instantiate(_playerBoatPrefab, _boatsRoot);
 		}
 	}
 

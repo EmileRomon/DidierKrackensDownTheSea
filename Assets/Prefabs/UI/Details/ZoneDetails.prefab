@@ -752,6 +752,7 @@ MonoBehaviour:
   _disabledColor: {r: 1, g: 0, b: 0, a: 1}
   _boatsRoot: {fileID: 4200760047698071502}
   _boatPrefab: {fileID: 730396754311290012, guid: 6545c0f52661ebc489811e276d68c422, type: 3}
+  _playerBoatPrefab: {fileID: 6347368319465793126, guid: d6b331a468ce92341be50fa09ca6db04, type: 3}
   _dragDropReceptor: {fileID: 5798576946784326122}
   _gameInfo: {fileID: 11400000, guid: 3e26f7d1af8b6c34cb881533f0f3695b, type: 2}
 --- !u!114 &3253402961547852600
@@ -1253,7 +1254,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6069391845794490194}
   m_HandleRect: {fileID: 6069391845794490197}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1573,7 +1574,7 @@ PrefabInstance:
       objectReference: {fileID: 6069391847554167119}
     - target: {fileID: 7959785494196573811, guid: 12316fa857299494dbeac1036f2c0442, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7959785494196573820, guid: 12316fa857299494dbeac1036f2c0442, type: 3}
       propertyPath: m_AnchorMax.y

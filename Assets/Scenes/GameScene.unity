@@ -1483,6 +1483,10 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 239405180}
+    - target: {fileID: 5450085887873743223, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
+      propertyPath: _playerBoatContainer
+      value: 
+      objectReference: {fileID: 1997980913}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d7de0886692754fad91fd80b4920d9, type: 3}
 --- !u!114 &1028523828 stripped
@@ -2456,6 +2460,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a973b0336e3e1a24db0dc66ca3ffaad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1997980913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3623066419100705782, guid: d6b331a468ce92341be50fa09ca6db04, type: 3}
+  m_PrefabInstance: {fileID: 6347368319109681916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de72fd68249f1c54ea296a08526050ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &959840510443182644
