@@ -33,7 +33,7 @@ public class Zone : MonoBehaviour
 
         foreach (Boat boat in _placedBoats)
         {
-			_currentDayIncome += (boat.Descriptor.IncomeFactor * _descriptor.RentabilityFactor);
+			_currentDayIncome += (boat.Descriptor.IncomeFactor * _descriptor.RentabilityFactor * CurrentWeather.ProfitIncrease);
         }
 
 		_currentDayIncome *= price;

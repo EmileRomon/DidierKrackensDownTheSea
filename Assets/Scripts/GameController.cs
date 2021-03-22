@@ -217,7 +217,7 @@ public class GameController : MonoBehaviour
         {
             foreach(Boat b in z.PlacedBoats)
             {
-                b.LoseLife(z.Descriptor.DangerFactor * 25);
+                b.LoseLife(z.Descriptor.DangerFactor * z.CurrentWeather.RiskIncrease * 30);
             }
         }
     }
