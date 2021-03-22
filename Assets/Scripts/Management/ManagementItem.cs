@@ -24,4 +24,6 @@ public abstract class ManagementItem : MonoBehaviour
         _itemSellPriceText.text = item.Descriptor.ResalePrice.ToString("0");
         _preview.sprite = item.Descriptor.ItemSprite;
     }
+
+    public virtual void UpdateItem() { }
 }

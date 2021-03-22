@@ -19,7 +19,7 @@ public class ManagementBoat : ManagementItem
 		
 	}
 
-	public void UpdateItem()
+	public override void UpdateItem()
 	{
 		Boat boat = _item as Boat;
 		if (boat != null)
