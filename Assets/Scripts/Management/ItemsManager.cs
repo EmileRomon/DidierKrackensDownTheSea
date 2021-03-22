@@ -48,7 +48,13 @@ public class ItemsManager : MonoBehaviour
 		}
 	}
 
-	private void SellItem(ManagementItem item)
+    public void OnEnable()
+    {
+		foreach (ManagementItem mgmtItem in _items)
+			mgmtItem.UpdateItem();
+    }
+
+    private void SellItem(ManagementItem item)
 	{
 		_playerController.SellItem(item);
 		_items.Remove(item);

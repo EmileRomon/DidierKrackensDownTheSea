@@ -107,7 +107,6 @@ public class GameController : MonoBehaviour
         {
             foreach (CrewMember member in pair.Value)
             {
-                Debug.LogWarning(member + " " + member.Descriptor.MaintenancePrice);
                 _cost += member.Descriptor.MaintenancePrice;
             }
         }
@@ -203,7 +202,7 @@ public class GameController : MonoBehaviour
         {
             foreach(Boat b in z.PlacedBoats)
             {
-                b.CurrentHealth -= z.Descriptor.DangerFactor * 25;
+                b.LoseLife(z.Descriptor.DangerFactor * 25);
             }
         }
     }
