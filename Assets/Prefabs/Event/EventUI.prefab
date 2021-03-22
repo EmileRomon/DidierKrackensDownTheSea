@@ -296,6 +296,9 @@ MonoBehaviour:
   _optionsContainer: {fileID: 9139887903510530346}
   _optionPrefab: {fileID: 5753986331376230161, guid: 18a7118d79c3b474b8c15699ac4b987e, type: 3}
   _gameController: {fileID: 0}
+  OnDisplayEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9139887901723953349
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Giant alien spiders - Mistery Island, Trawler
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7535e73ad6924a347b800502ebfe4c4d, type: 2}
   m_sharedMaterial: {fileID: 5000676357047715081, guid: 7535e73ad6924a347b800502ebfe4c4d, type: 2}
@@ -388,8 +391,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

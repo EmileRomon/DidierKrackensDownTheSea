@@ -22,8 +22,11 @@ MonoBehaviour:
   _attributes:
   - {fileID: 11400000, guid: f4ec6a13e83baa140abb10f416d01764, type: 2}
   - {fileID: 11400000, guid: c3e58bb19aa47ee48bba59a85be3d43e, type: 2}
-  _events: []
-  _zoneBackground: {fileID: 21300000, guid: 2e4c113edad3cd84b8fd8c0ce29987de, type: 3}
-  _noEventProbability: 0.5
+  _events:
+  - {fileID: 11400000, guid: f602f3cff3771f645ad6869a76c7352d, type: 2}
+  - {fileID: 11400000, guid: e5002da823fcf434bb53d198c29ce5b2, type: 2}
+  - {fileID: 11400000, guid: 1b4966f4ae8205d49b1dbd3838fac2f6, type: 2}
+  _zoneBackground: {fileID: 21300000, guid: bc1d09f31800e2b448c9c75fa0b90cf7, type: 3}
+  _noEventProbability: 0.3
   _ecoFragilityFactor: 1
   _naturalDecayRange: {x: 1, y: 2}

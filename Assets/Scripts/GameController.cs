@@ -90,6 +90,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameOverManager _gameOver;
     [SerializeField] private EndDayRecap _endDayRecap;
+    [SerializeField] private int boatDamage = 15;
 
 
     //the numeber of fish fished
@@ -220,7 +221,7 @@ public class GameController : MonoBehaviour
         {
             foreach(Boat b in z.PlacedBoats)
             {
-                b.LoseLife(z.Descriptor.DangerFactor * z.CurrentWeather.RiskIncrease * 30);
+                b.LoseLife(z.Descriptor.DangerFactor * z.CurrentWeather.RiskIncrease * boatDamage);
             }
         }
     }
@@ -267,6 +268,10 @@ public class GameController : MonoBehaviour
 
         _endDayRecap.EndDay();
         _endDayRecap.StartDay();
+        foreach(Zone z in _zones)
+        {
+            z.ChangeWeather();
+        }
     }
 
     private void DisplayGameOver(GameOverType type)

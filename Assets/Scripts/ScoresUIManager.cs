@@ -20,10 +20,10 @@ public class ScoresUIManager : MonoBehaviour
     }
     public void UpdateMoneyCounter(float amount)
     {
-        _moneyDisplay.text = string.Format("{0}", amount);
+        _moneyDisplay.text = string.Format("{0}", amount.ToString("0"));
     }
     public void UpdateScoreCounter(float score)
     {
-        _scoreDisplay.text = string.Format("{0}", score);
+        _scoreDisplay.text = string.Format("{0}", score.ToString("0"));
     }
 }
