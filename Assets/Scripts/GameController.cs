@@ -103,7 +103,14 @@ public class GameController : MonoBehaviour
     private void CalculateCost()
     {
         _cost = 0;
-        //TODO: crew salary
+        foreach (KeyValuePair<string, List<CrewMember>> pair in _playerController.CrewMembers)
+        {
+            foreach (CrewMember member in pair.Value)
+            {
+                Debug.LogWarning(member + " " + member.Descriptor.MaintenancePrice);
+                _cost += member.Descriptor.MaintenancePrice;
+            }
+        }
 
         _cost += _dailyDebt;
     }
@@ -205,7 +212,6 @@ public class GameController : MonoBehaviour
     {
         _canvasGroup.alpha=1;
         _canvasGroup.blocksRaycasts = true;
-        PrintDebug();
 
         _playerController.NextDay();
 
@@ -216,6 +222,7 @@ public class GameController : MonoBehaviour
 
         DecayFromBoats();
         DecayNatural();
+        PrintDebug();
 
         _playerController.AddToMoneyAmount(_profit);
         _playerController.AddToMoneyAmount(_cost *= -1);
@@ -232,16 +239,17 @@ public class GameController : MonoBehaviour
 
     private void LateEndDay()
     {
-        _endDayRecap.EndDay();
         PutBackBoat();
 
         UpdateView();
         RemoveDeadZones();
-
         if (_zones.Count <= 0)
         {
             DisplayGameOver(GameOverType.NoZoneleft);
         }
+
+        _endDayRecap.EndDay();
+        _endDayRecap.StartDay();
     }
 
     private void DisplayGameOver(GameOverType type)

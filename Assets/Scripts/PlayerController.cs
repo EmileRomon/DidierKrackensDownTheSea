@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Dictionary<string, List<Boat>> _boats = new Dictionary<string, List<Boat>>();
     private Dictionary<string, List<CrewMember>> _crewMembers = new Dictionary<string, List<CrewMember>>();
 
+    public Dictionary<string, List<CrewMember>> CrewMembers => _crewMembers;
+
     private List<Boat> _availableBoats = new List<Boat>();
     private List<CrewMember> _availableCrewMembers = new List<CrewMember>();
 
@@ -120,11 +122,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ItemsManager _itemsManager;
     [SerializeField] private ScoresUIManager _scoresUIManager;
     private float _moneyScore;
-    private float _moneyAmount;
+    private float _moneyAmount = 9999999;
     private int _currentDay = 1;
 
     public float MoneyScore => _moneyScore;
-    public float MoneyAmount => _moneyAmount = 9999999;
+    public float MoneyAmount => _moneyAmount;
     public int CurrentDay { get => _currentDay; set => _currentDay = value; }
 
     public void PayAllBoatsMaintenance()
