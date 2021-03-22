@@ -21,11 +21,16 @@ public class GameController : MonoBehaviour
     private float _cost;
     public float Cost => _cost;
 
+    private float _salaries;
+    public float Salaries => _salaries;
+
     [Header("Price of a basic fish, impact every zone")]
     [SerializeField] private float _price;
 
     [Header("Debt, price to pay everyday")]
     [SerializeField] private float _dailyDebt;
+
+    public float DailyDebt => _dailyDebt;
 
     [SerializeField] private MiniGameController _prefabGame;
 
@@ -91,6 +96,7 @@ public class GameController : MonoBehaviour
     private int _minigameScore;
     public int MiniGameScore { get { return _minigameScore; } set { _minigameScore = value; } }
     public float MiniGameMoney { get { return _minigameScore * _playerController.CurrentZone.Descriptor.RentabilityFactor * _price; } }
+    public bool DidPlayMiniGame { get; set; }
 
     private void CalculateProfit()
     {
@@ -104,14 +110,16 @@ public class GameController : MonoBehaviour
     private void CalculateCost()
     {
         _cost = 0;
+        _salaries = 0;
         foreach (KeyValuePair<string, List<CrewMember>> pair in _playerController.CrewMembers)
         {
             foreach (CrewMember member in pair.Value)
             {
-                _cost += member.Descriptor.MaintenancePrice;
+                _salaries += member.Descriptor.MaintenancePrice;
             }
         }
 
+        _cost += _salaries;
         _cost += _dailyDebt;
     }
 
@@ -181,6 +189,7 @@ public class GameController : MonoBehaviour
     {
         if (_playerController.CurrentZone != null)
         {
+            DidPlayMiniGame = true;
             _canvasGroup.alpha = 0;
             _canvasGroup.blocksRaycasts = false;
             MiniGameController mgc = Instantiate(_prefabGame);
@@ -189,7 +198,12 @@ public class GameController : MonoBehaviour
             mgc.SetWeather(MiniGameController.MiniGameWeather.SUNNY); //todo
             mgc.SetTime(90); //1:30
         }
-        else EndDay();
+        else
+        {
+            DidPlayMiniGame = false;
+
+            EndDay();
+        }
     }
 
     public void StartDay()
