@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weatherName: Sunny
   _weatherSprite: {fileID: 21300000, guid: 03a52a9d6e6956949a2d81bd32d5f1b9, type: 3}
-  _riskIncrease: 0
-  _profitIncrease: 0
+  _riskIncrease: 0.5
+  _profitIncrease: 0.75

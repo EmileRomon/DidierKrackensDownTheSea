@@ -46,14 +46,14 @@ public class Zone : MonoBehaviour
     {
         foreach (Boat boat in _placedBoats)
         {
-            CurrentHealth -= ((BoatDescriptor)boat.Descriptor).EcoImpactFactor * Descriptor.EcoFragility;
+            CurrentHealth -= ((BoatDescriptor)boat.Descriptor).EcoImpactFactor * Descriptor.EcoFragility * 30;
         }
     }
 
     public void DecayNatural()
     {
         float rand = Random.Range(Descriptor.NaturalDecayRange.x, Descriptor.NaturalDecayRange.y);
-        CurrentHealth -= rand * Descriptor.EcoFragility;
+        CurrentHealth -= (rand * Descriptor.EcoFragility *30);
     }
 
     public void OpenZoneDetails()

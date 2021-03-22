@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weatherName: Foggy
   _weatherSprite: {fileID: 21300000, guid: 76badd7868aa22e43844712348618a4e, type: 3}
-  _riskIncrease: 0
-  _profitIncrease: 0
+  _riskIncrease: 2
+  _profitIncrease: 0.9
