@@ -13,18 +13,24 @@ public class DragDropReceptorDetails : DragDropReceptor
 		db = eventData.pointerDrag.GetComponent<DraggableBoat>();
 		if (_zone != null) _zoneDetails.UpdateDetails(_zone);
 
-		Debug.Log(_zone == null);
-
 		if (db != null && db.Boat.CheckAvailable())
 		{
-			Destroy(eventData.pointerDrag);
-
 			db.Boat.AffectNewZone(_zone);
 
 			if (_list != null)
 			{
 				_list.AddBoat(db.Boat);
 			}
+			Destroy(eventData.pointerDrag);
+		}
+		else
+		{
+			DraggablePlayerBoat dpb = eventData.pointerDrag.GetComponent<DraggablePlayerBoat>();
+			if (dpb != null)
+			{
+				dpb.Player.CurrentZone = _zone;
+			}
+			Destroy(eventData.pointerDrag);
 		}
 	}
 }

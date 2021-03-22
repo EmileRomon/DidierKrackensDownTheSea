@@ -7,6 +7,7 @@ public class DraggableBoatList : MonoBehaviour
     [SerializeField] protected GameObject _prefabListItem;
 
     [SerializeField] protected PlayerController _pc;
+	public PlayerController Player => _pc;
 
     protected void Start()
     {

@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CrewMembersIndicator _crewMembersIndicator;
     [SerializeField] private GameInfo _gameInfo;
 
+	public Zone CurrentZone { get; set; }
+
     private void Awake()
     {
         if (_gameInfo != null) _gameInfo.Player = this;
@@ -239,5 +241,12 @@ public class PlayerController : MonoBehaviour
         foreach (BoatDescriptor boat in _boatDescriptors) AddBoat(boat);
         foreach (CrewMemberDescriptor crew in _crewDescriptors) AddCrewMember(crew);
     }
+
+	[ContextMenu("Current Zone")]
+	public void PrintCurrentZone()
+	{
+		if (CurrentZone == null) Debug.Log("null");
+		else Debug.Log(CurrentZone.Descriptor.ZoneName);
+	}
     #endregion Debug
 }

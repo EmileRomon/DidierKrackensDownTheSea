@@ -17,7 +17,7 @@ public class MainMenuController : MonoBehaviour
 		{
 			_gameInfo.CompanyName = _companyNameIF.text;
 			_playSound.Play();
-			SceneManager.LoadScene("GameScene_TmpQuentin");
+			SceneManager.LoadScene("GameScene");
 		}
 	}
 

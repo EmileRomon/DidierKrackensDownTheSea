@@ -45,6 +45,18 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 
 			Destroy(eventData.pointerDrag);
 		}
+		else
+		{
+			if(_list == null)
+			{
+				DraggablePlayerBoat dpb = eventData.pointerDrag.GetComponent<DraggablePlayerBoat>();
+				if(dpb != null)
+				{
+					dpb.Player.CurrentZone = _zone;
+				}
+			}
+			Destroy(eventData.pointerDrag);
+		}
 
 	}
 

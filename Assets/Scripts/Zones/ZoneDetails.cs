@@ -23,6 +23,7 @@ public class ZoneDetails : MonoBehaviour
 	[SerializeField] private BoatListItem _boatPrefab;
 
 	[SerializeField] private DragDropReceptorDetails _dragDropReceptor;
+	[SerializeField] private GameInfo _gameInfo;
 
 	private MenuButtonHandler _menuButtonsHandler;
 
@@ -69,6 +70,12 @@ public class ZoneDetails : MonoBehaviour
 			BoatListItem db = GameObject.Instantiate(_boatPrefab, _boatsRoot);
 			db.SetBoat(b);
         }
+
+		if(_gameInfo.Player.CurrentZone == zone)
+		{
+			//TODO
+			Debug.Log("Bateau du joueur à afficher dans ZoneDetails");
+		}
 	}
 
 	public void OnClose()

@@ -753,6 +753,7 @@ MonoBehaviour:
   _boatsRoot: {fileID: 4200760047698071502}
   _boatPrefab: {fileID: 730396754311290012, guid: 6545c0f52661ebc489811e276d68c422, type: 3}
   _dragDropReceptor: {fileID: 5798576946784326122}
+  _gameInfo: {fileID: 11400000, guid: 3e26f7d1af8b6c34cb881533f0f3695b, type: 2}
 --- !u!114 &3253402961547852600
 MonoBehaviour:
   m_ObjectHideFlags: 0

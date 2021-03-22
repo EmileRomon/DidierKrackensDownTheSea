@@ -28,8 +28,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private float _dailyDebt;
 
     [SerializeField] private MiniGameController _prefabGame;
-    [SerializeField] private bool _miniGame;
-
 
 
     #endregion
@@ -60,12 +58,13 @@ public class GameController : MonoBehaviour
     #region BoatLists
 
     [SerializeField] DraggableBoatList _playerList;
+	[SerializeField] DraggablePlayerBoatContainer _playerBoatContainer;
 
-    #endregion
+	#endregion
 
-    #region Unity
+	#region Unity
 
-    [SerializeField]  private CanvasGroup _canvasGroup;
+	[SerializeField]  private CanvasGroup _canvasGroup;
 
     public void Awake()
     {
@@ -173,7 +172,7 @@ public class GameController : MonoBehaviour
 
     public void ManageEndDay()
     {
-        if (_miniGame)
+        if (_playerController.CurrentZone != null)
         {
             _canvasGroup.alpha = 0;
             _canvasGroup.blocksRaycasts = false;
@@ -216,7 +215,8 @@ public class GameController : MonoBehaviour
         }
 
         LaunchEvents();
-
+		_playerController.CurrentZone = null;
+		_playerBoatContainer.UpdateView();
     }
 
     private void LateEndDay()
