@@ -190,6 +190,17 @@ public class GameController : MonoBehaviour
         _endDayRecap.StartDay();
     }
 
+    private void DamageBoats()
+    {
+        foreach(Zone z in _zones)
+        {
+            foreach(Boat b in z.PlacedBoats)
+            {
+                b.CurrentHealth -= z.Descriptor.DangerFactor * 25;
+            }
+        }
+    }
+
     public void EndDay()
     {
         _canvasGroup.alpha=1;
@@ -201,7 +212,7 @@ public class GameController : MonoBehaviour
         CalculateProfit();
         CalculateCost();
 
-        //todo:damage boats
+        DamageBoats();
 
         DecayFromBoats();
         DecayNatural();

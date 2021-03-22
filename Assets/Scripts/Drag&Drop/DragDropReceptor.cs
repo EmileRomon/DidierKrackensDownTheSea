@@ -53,9 +53,9 @@ public class DragDropReceptor: MonoBehaviour, IDropHandler
 				if(dpb != null)
 				{
 					dpb.Player.CurrentZone = _zone;
+					Destroy(eventData.pointerDrag);
 				}
 			}
-			Destroy(eventData.pointerDrag);
 		}
 
 	}
