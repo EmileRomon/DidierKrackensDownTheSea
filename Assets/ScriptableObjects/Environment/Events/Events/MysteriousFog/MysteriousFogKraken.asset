@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
-  m_Name: SubOilTanker2
+  m_Name: MysteriousFogKraken
   m_EditorClassIdentifier: 
-  _eventName: Oil Tanker
-  _eventDescription: You ignore the oil tanker and get back to work.
+  _eventName: Mysterious Fog
+  _eventDescription: A mysterious fog surround your ship, you can't see anything.
   _eventOptions:
-  - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
-  _eventOutcomes:
-  - {fileID: 11400000, guid: e931983c15426be4f8e20177ea5f4d42, type: 2}
-  _eventProbability: 1
+  - {fileID: 11400000, guid: 5068a5990a20cbf429daa333196658c4, type: 2}
+  _eventOutcomes: []
+  _eventProbability: 0.8

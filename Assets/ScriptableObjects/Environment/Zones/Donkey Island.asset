@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f602f3cff3771f645ad6869a76c7352d, type: 2}
   - {fileID: 11400000, guid: e5002da823fcf434bb53d198c29ce5b2, type: 2}
   - {fileID: 11400000, guid: 1b4966f4ae8205d49b1dbd3838fac2f6, type: 2}
+  - {fileID: 11400000, guid: 19c8b836990e26f4cb60b8d6a60d5da4, type: 2}
   _zoneBackground: {fileID: 21300000, guid: 8b948a89b5dfc7d408c14985402687ed, type: 3}
   _noEventProbability: 0.3
   _ecoFragilityFactor: 1

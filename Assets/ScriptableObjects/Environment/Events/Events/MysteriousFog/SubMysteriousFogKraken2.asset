@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b216ebe05251ac4c803fd08f41640b9, type: 3}
-  m_Name: SubOilTanker2
+  m_Name: SubMysteriousFogKraken2
   m_EditorClassIdentifier: 
-  _eventName: Oil Tanker
-  _eventDescription: You ignore the oil tanker and get back to work.
+  _eventName: Unleash the kraken
+  _eventDescription: Suddenly, a giant tentacle come out of the water and send your
+    boat flying. Your boat hit the water and take a lot of damages.
   _eventOptions:
   - {fileID: 11400000, guid: 1198b8d2e68dd674d96b9f8f52b7f5f1, type: 2}
   _eventOutcomes:
-  - {fileID: 11400000, guid: e931983c15426be4f8e20177ea5f4d42, type: 2}
-  _eventProbability: 1
+  - {fileID: 11400000, guid: 150ecccc852e13a4ea1eac3df34e84a3, type: 2}
+  - {fileID: 11400000, guid: d385fee812ebf874a82e71fb2fb7ae70, type: 2}
+  _eventProbability: 0.8
