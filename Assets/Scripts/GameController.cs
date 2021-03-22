@@ -107,7 +107,6 @@ public class GameController : MonoBehaviour
         {
             foreach (CrewMember member in pair.Value)
             {
-                Debug.LogWarning(member + " " + member.Descriptor.MaintenancePrice);
                 _cost += member.Descriptor.MaintenancePrice;
             }
         }
