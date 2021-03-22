@@ -7,6 +7,7 @@ using TMPro;
 public class ManagementBoat : ManagementItem
 {
 	[SerializeField] private Button _repairButton;
+	[SerializeField] private TextMeshProUGUI _itemRepairPriceText;
 	[SerializeField] private Image _health;
 
 	public Button RepairButton => _repairButton;
@@ -25,6 +26,7 @@ public class ManagementBoat : ManagementItem
 		{
 			BoatDescriptor boatDescriptor = boat.Descriptor as BoatDescriptor;
 			_health.fillAmount = boat.CurrentHealth / boatDescriptor.MaxHealth;
+			_itemRepairPriceText.text = boatDescriptor.MaintenancePrice.ToString("0");
 		}
 	}
 }

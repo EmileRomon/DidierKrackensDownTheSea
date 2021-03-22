@@ -7,6 +7,7 @@ using TMPro;
 public class ShopItem : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI _itemNameText;
+	[SerializeField] private TextMeshProUGUI _itemPriceText;
 	[SerializeField] private Button _detailsButton;
 	[SerializeField] private Button _purchaseButton;
 	[SerializeField] private Image _preview;
@@ -29,6 +30,7 @@ public class ShopItem : MonoBehaviour
 		{
 			_itemDescriptor = value;
 			_itemNameText.text = ItemDescriptor.ItemName;
+			_itemPriceText.text = ItemDescriptor.PurchasePrice.ToString("0");
 			_preview.sprite = ItemDescriptor.ItemSprite;
 		}
 	}

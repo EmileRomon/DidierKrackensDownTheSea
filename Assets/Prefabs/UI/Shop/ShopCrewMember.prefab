@@ -755,6 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemNameText: {fileID: 1212622319411777051}
+  _itemPriceText: {fileID: 2045184253}
   _detailsButton: {fileID: 2121754701196916090}
   _purchaseButton: {fileID: 3706238341179080263}
   _preview: {fileID: 1288191170163244571}

@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 5520177081394786968}
   - component: {fileID: 6041736705829834149}
   m_Layer: 5
-  m_Name: ShopItem_MockUp
+  m_Name: ShopBoat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,6 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemNameText: {fileID: 1212622319411777051}
+  _itemPriceText: {fileID: 2045184253}
   _detailsButton: {fileID: 2121754701196916090}
   _purchaseButton: {fileID: 3706238341179080263}
   _preview: {fileID: 320830954}

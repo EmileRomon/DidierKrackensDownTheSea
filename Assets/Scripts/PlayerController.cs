@@ -32,6 +32,14 @@ public class PlayerController : MonoBehaviour
         if (_gameInfo != null) _gameInfo.Player = this;
     }
 
+    private void Start()
+    {
+        _scoresUIManager.UpdateDaysCounter(CurrentDay);
+        _scoresUIManager.UpdateMoneyCounter(MoneyAmount);
+        _scoresUIManager.UpdateScoreCounter(MoneyScore);
+        _crewMembersIndicator.UpdateNumber(AvailableCrewMembers.Count);
+    }
+
     public void AssignMemberToBoat(Boat boat)
     {
         int availableCount = _availableCrewMembers.Count;
@@ -116,7 +124,7 @@ public class PlayerController : MonoBehaviour
     private int _currentDay = 1;
 
     public float MoneyScore => _moneyScore;
-    public float MoneyAmount => _moneyAmount;
+    public float MoneyAmount => _moneyAmount = 9999999;
     public int CurrentDay { get => _currentDay; set => _currentDay = value; }
 
     public void PayAllBoatsMaintenance()
