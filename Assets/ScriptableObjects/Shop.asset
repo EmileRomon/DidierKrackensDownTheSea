@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boatDescriptors:
   - {fileID: 11400000, guid: 242cf7a7dd030b04f9ccfb9d77f48a18, type: 2}
+  - {fileID: 11400000, guid: ebdff56cc73d9a94f8c268723cfa8586, type: 2}
+  - {fileID: 11400000, guid: c508667c8c560ec49b045c867c3b7575, type: 2}
   _crewMembersDescriptors:
   - {fileID: 11400000, guid: 75ef81310fe985c4981449e0fbdbe12b, type: 2}
