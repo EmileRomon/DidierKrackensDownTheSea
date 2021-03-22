@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89768d8626d2a1b4f8b3bc094584f30d, type: 3}
-  m_Name: Trawler
+  m_Name: BigTrawler
   m_EditorClassIdentifier: 
-  _itemName: Trawler
-  _incomeFactor: 1
-  _maintenancePrice: 200
-  _purchasePrice: 500
-  _resalePrice: 250
-  _sprite: {fileID: 21300000, guid: 283f122d5b6c22941970009863de67d3, type: 3}
-  _maxHealth: 300
-  _minCrew: 2
-  _maxCrew: 4
-  _ecoImpactFactor: 1
+  _itemName: Big trawler
+  _incomeFactor: 1.6
+  _maintenancePrice: 400
+  _purchasePrice: 1200
+  _resalePrice: 500
+  _sprite: {fileID: 21300000, guid: bfec2645b46c5624f95cdb4f912bd190, type: 3}
+  _maxHealth: 600
+  _minCrew: 4
+  _maxCrew: 8
+  _ecoImpactFactor: 3

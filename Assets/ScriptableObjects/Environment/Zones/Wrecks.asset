@@ -13,19 +13,17 @@ MonoBehaviour:
   m_Name: Wrecks
   m_EditorClassIdentifier: 
   _name: Wrecks
-  _maxHealth: 100
-  _rentabilityFactor: 1
-  _dangerFactor: 0.5
+  _maxHealth: 250
+  _rentabilityFactor: 2
+  _dangerFactor: 1.7
   _possibleWeathers:
-  - {fileID: 11400000, guid: f2a969b0137f9674d895ac432ca100bb, type: 2}
-  - {fileID: 11400000, guid: efb45f22b8668f848a50b321c6e8c5b5, type: 2}
   - {fileID: 11400000, guid: 7b33b6793111eed46a1c97e36ccbd9e5, type: 2}
-  - {fileID: 11400000, guid: 0e59651240957ea4eb826c440a2f5edc, type: 2}
+  - {fileID: 11400000, guid: f2a969b0137f9674d895ac432ca100bb, type: 2}
   _attributes:
   - {fileID: 11400000, guid: f4ec6a13e83baa140abb10f416d01764, type: 2}
   - {fileID: 11400000, guid: c3e58bb19aa47ee48bba59a85be3d43e, type: 2}
   _events: []
   _zoneBackground: {fileID: 21300000, guid: 2e4c113edad3cd84b8fd8c0ce29987de, type: 3}
-  _noEventProbability: 0
-  _ecoFragilityFactor: 0
-  _naturalDecayRange: {x: 0, y: 0}
+  _noEventProbability: 0.5
+  _ecoFragilityFactor: 1
+  _naturalDecayRange: {x: 1, y: 5}
