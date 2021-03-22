@@ -170,6 +170,8 @@ public class PlayerController : MonoBehaviour
         AddToMoneyAmount(amountToSell);
         Boat boat = mgmtItem.Item as Boat;
         RemoveBoat(boat);
+        CrewMember crew = mgmtItem.Item as CrewMember;
+        RemoveCrew(crew);
     }
 
     public void RemoveBoat(Boat boat)
@@ -182,6 +184,26 @@ public class PlayerController : MonoBehaviour
                 _availableBoats.Remove(boat);
             }
             _removingBoat.Invoke(boat);
+        }
+    }
+
+    public void RemoveCrew(CrewMember crew)
+    {
+        if(crew != null)
+        {
+            if(crew.CurrentBoat != null)
+            {
+                RemoveMemberFromBoat(crew.CurrentBoat);
+            }
+
+            _crewMembers[crew.Descriptor.ItemName].Remove(crew);
+            if(_availableCrewMembers.Contains(crew))
+            {
+                _availableCrewMembers.Remove(crew);
+                _crewMembersIndicator?.UpdateNumber(_availableCrewMembers.Count);
+
+            }
+
         }
     }
 
