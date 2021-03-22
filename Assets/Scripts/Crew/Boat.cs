@@ -29,6 +29,11 @@ public class Boat : CrewItem
 		return Descriptor.ResalePrice;
 	}
 
+	public void LoseLife(float n)
+    {
+		CurrentHealth = Mathf.Max(0, CurrentHealth - n);
+    }
+
 	public float Repair()
 	{
 		//TO-DO: Add a repair price
@@ -48,6 +53,6 @@ public class Boat : CrewItem
 	public bool CheckAvailable()
 	{
 		BoatDescriptor bd = (BoatDescriptor)Descriptor;
-		return _crew.Count >= bd.MinCrew && _crew.Count <= bd.MaxCrew;
+		return _crew.Count >= bd.MinCrew && _crew.Count <= bd.MaxCrew && CurrentHealth >0;
 	}
 }

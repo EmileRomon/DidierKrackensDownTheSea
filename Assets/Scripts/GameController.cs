@@ -203,7 +203,7 @@ public class GameController : MonoBehaviour
         {
             foreach(Boat b in z.PlacedBoats)
             {
-                b.CurrentHealth -= z.Descriptor.DangerFactor * 25;
+                b.LoseLife(z.Descriptor.DangerFactor * 25);
             }
         }
     }
