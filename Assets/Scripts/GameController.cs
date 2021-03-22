@@ -90,6 +90,7 @@ public class GameController : MonoBehaviour
     //the numeber of fish fished
     private int _minigameScore;
     public int MiniGameScore { get { return _minigameScore; } set { _minigameScore = value; } }
+    public float MiniGameMoney { get { return _minigameScore * _playerController.CurrentZone.Descriptor.RentabilityFactor * _price; } }
 
     private void CalculateProfit()
     {
