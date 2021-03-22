@@ -25,7 +25,7 @@ public class EndDayRecap : MonoBehaviour
     #region Zones
     [SerializeField] private TextMeshProUGUI _zoneRecap;
     private string _zoneIncomeStr = "${0} made in {1}.\n";
-    private string _zoneRemovedStr = "This zone has been destroyed.";
+    private string _zoneRemovedStr = "{0}\n.";
     #endregion Zones
 
     #region MiniGame
@@ -72,7 +72,7 @@ public class EndDayRecap : MonoBehaviour
             {
                 _zoneRecap.text += string.Format(_zoneIncomeStr, zone.CurrentDayIncome.ToString(), zone.Descriptor.ZoneName);
             }
-            _zoneRecap.text += _zoneRemovedStr + "\n";
+            _zoneRecap.text += string.Format(_zoneRemovedStr, zone.Descriptor.ZoneName);
         }
 
         if (_gameController.DidPlayMiniGame)
